@@ -1,4 +1,4 @@
-import React, { useContext, useStaste } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../src/contexts/auth';
 
