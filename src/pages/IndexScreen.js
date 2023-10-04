@@ -13,10 +13,15 @@ import BotaoLargo from "../components/BotaoLargo.js";
 
 export default function IndexScreen() {
     return (
-        <KeyboardAvoidingView className="bg-white flex-1 items-center justify-center">
+        <KeyboardAvoidingView className="bg-light flex-1 flex items-center justify-center p-4">
             <Text>Oi</Text>
-            <BotaoLargo icone={"home"} titulo={"Cadastrar"} onPress={""} texto={"Cadastrar"} />
-            <BotaoLargo icone={false} titulo={"Cadastrar"} onPress={""} texto={"Cadastrar"} />
+            <View className="my-4">
+                <BotaoLargo icone={"google"} titulo={"Entrar com Google"} onPress={""} texto={"Entrar com Google"} />
+            </View>
+            <BotaoLargo icone={false} titulo={"Entrar"} onPress={""} texto={"Entrar"} />
+            <View className="my-4">
+                <BotaoLargo icone={"facebook"} titulo={"Entrar com Facebook"} onPress={""} texto={"Entrar com Facebook"} />
+            </View>
         </KeyboardAvoidingView>
     )
 }
