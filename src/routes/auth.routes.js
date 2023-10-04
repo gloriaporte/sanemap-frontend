@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import IndexScreen from '../pages/IndexScreen';
-import IntroScreen from '../pages/IntroScreen/IntroScreen';
+import IntroScreen from '../pages/IntroScreen';
 
 
 const AuthTab = createStackNavigator();
