@@ -9,7 +9,7 @@ import { useFocusEffect } from '@react-navigation/native';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 
-
+import HomeScreen from '../pages/HomeScreen';
 
 const AppTab = createBottomTabNavigator();
 const theme = {
@@ -32,8 +32,11 @@ export default function AppRoutes() {
                 inactiveColor="#fff"
                 barStyle={{ backgroundColor: "#01639D" }}
                 backBehavior='initialRoute'
+                screenOptions={({ route, navigation }) => ({
+                    headerShown: false
+               })}
             >
-                {/* <AppTab.Screen 
+                <AppTab.Screen 
                     name="Home" 
                     component={HomeScreen} 
                     initialParams={{ secao: null }}
@@ -44,23 +47,13 @@ export default function AppRoutes() {
                     }}
                 />
 
-                <AppTab.Screen 
+                {/* <AppTab.Screen 
                     name="Notificações" 
                     component={NotificacoesScreen} 
                     options={{
                         barStyle: { height: 200 },
                         tabBarIcon: ({ color }) => (
                             <FontAwesome5 name="exclamation-circle" size={26} color={color} />
-                        )
-                    }}
-                />
-
-                <AppTab.Screen 
-                    name="Sair" 
-                    component={SairScreen}
-                    options={{
-                        tabBarIcon: ({ color }) => (
-                            <FontAwesome5 name="sign-out-alt" size={26} color={color} />
                         )
                     }}
                 /> */}

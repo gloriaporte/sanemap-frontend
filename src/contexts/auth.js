@@ -33,32 +33,36 @@ export default function AuthProvider({ children }) {
             password: 123
         }
 
-        api.defaults.headers.common["Accept"] = 'application/json';
-        api.defaults.headers.common["Content-type"] = 'application/json';
-        api.post('login', payload).then(
-            response => {
-                api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
-                api.get("").
-                then(
-                    response => {
-                      
-                    }
-                ).catch( error => {
-                    console.log(error.message);
-                });
+        setError(null);
+        setUser(payload);
+        storageUser(payload);
 
-                setError(null);
-                setUser(payload);
-                storageUser(payload);
-            }
-        ).catch( error => {
-            if(error.code == "ERR_BAD_REQUEST") {
-                setError({id: "3", msg: "RM e/ou senha incorretos."});
-            } else {
-                setError({id: "3", msg: "Ocorreu um erro, contate o suporte."});
-            }
-            console.log(error);
-        });
+        // api.defaults.headers.common["Accept"] = 'application/json';
+        // api.defaults.headers.common["Content-type"] = 'application/json';
+        // api.post('login', payload).then(
+        //     response => {
+        //         api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
+        //         api.get("").
+        //         then(
+        //             response => {
+                      
+        //             }
+        //         ).catch( error => {
+        //             console.log(error.message);
+        //         });
+
+        //         setError(null);
+        //         setUser(payload);
+        //         storageUser(payload);
+        //     }
+        // ).catch( error => {
+        //     if(error.code == "ERR_BAD_REQUEST") {
+        //         setError({id: "3", msg: "RM e/ou senha incorretos."});
+        //     } else {
+        //         setError({id: "3", msg: "Ocorreu um erro, contate o suporte."});
+        //     }
+        //     console.log(error);
+        // });
     }
 
     async function storageUser(data) {
