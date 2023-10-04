@@ -12,6 +12,8 @@ import {
 import BotaoLargo from "../components/BotaoLargo.js";
 
 export default function IndexScreen() {
+    const navigation = useNavigation()
+    
     return (
         <KeyboardAvoidingView className="bg-light flex-1 flex items-center justify-center p-4">
             <Text>Oi</Text>
@@ -21,6 +23,9 @@ export default function IndexScreen() {
             <BotaoLargo icone={false} titulo={"Entrar"} onPress={""} texto={"Entrar"} />
             <View className="my-4">
                 <BotaoLargo icone={"facebook"} titulo={"Entrar com Facebook"} onPress={""} texto={"Entrar com Facebook"} />
+            </View>
+            <View className="my-4">
+                <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('IntroScreen')} texto={"Página IntroScreen"} />
             </View>
         </KeyboardAvoidingView>
     )
