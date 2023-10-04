@@ -37,7 +37,6 @@ export default function AuthProvider({ children }) {
         api.defaults.headers.common["Content-type"] = 'application/json';
         api.post('login', payload).then(
             response => {
-
                 api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
                 api.get("").
                 then(
@@ -74,7 +73,7 @@ export default function AuthProvider({ children }) {
             api.post('logout').then(
                 response => {
                     setUser(null);
-                    setError(null);
+                    setError(null); 
                     setLoading(false);
                 }).catch( error => {
                     setError("Houve um erro ao tentar sair, contate o suporte.");
