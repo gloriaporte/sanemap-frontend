@@ -12,13 +12,18 @@ import {
 import BotaoLargo from "../components/BotaoLargo.js";
 
 export default function IndexScreen() {
-    const navigation = useNavigation()
+    const navigation = useNavigation();
+    const { signIn } = useContext(AuthContext);
+
+    function handleLogin() {
+        signIn("Teste", 123);
+    }
     
     return (
         <KeyboardAvoidingView className="bg-light flex-1 flex items-center justify-center p-4">
             <Text>Oi</Text>
             <View className="my-4">
-                <BotaoLargo icone={"google"} titulo={"Entrar com Google"} onPress={""} texto={"Entrar com Google"} />
+                <BotaoLargo icone={"google"} titulo={"Entrar com Google"} onPress={handleLogin} texto={"Entrar com Google"} />
             </View>
             <BotaoLargo icone={false} titulo={"Entrar"} onPress={""} texto={"Entrar"} />
             <View className="my-4">

@@ -12,7 +12,7 @@ export default function AuthRoutes() {
         <AuthTab.Navigator 
          screenOptions={({ route, navigation }) => ({
              headerShown: false
-         })}>
+        })}>
              <AuthTab.Screen name="IndexScren" component={IndexScreen} />
              <AuthTab.Screen name="IntroScreen" component={IntroScreen} />
         </AuthTab.Navigator>

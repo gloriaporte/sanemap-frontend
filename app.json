@@ -4,7 +4,7 @@
     "slug": "sanemap",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/logo_without_name.svg",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/logo_with_name.svg",
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/logo_without_name.svg",
         "backgroundColor": "#F4F9FF"
       }
     },
