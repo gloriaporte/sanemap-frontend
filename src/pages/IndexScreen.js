@@ -27,9 +27,12 @@ export default function IndexScreen() {
                 <BotaoLargo icone={"google"} titulo={"Entrar com Google"} onPress={handleLogin} texto={"Entrar com Google"} />
             </View>
             <BotaoLargo icone={false} titulo={"Entrar"} onPress={""} texto={"Entrar"} />
-            {/* <View className="my-4">
+            <View className="my-4">
                 <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('OnBoardingScreen')} texto={"Página de OnBoarding"} />
-            </View> */}
+            </View>
+            <View className="my-4">
+                <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('LoginScreen')} texto={"Página de Login"} />
+            </View>
         </KeyboardAvoidingView>
     )
 }
