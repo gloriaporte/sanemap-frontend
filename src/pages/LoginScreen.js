@@ -4,12 +4,14 @@ import BotaoLargo from "../components/BotaoLargo";
 import { useNavigation } from "@react-navigation/native";
 import TextInputStyled from "../components/TextInputStyled";
 import { AuthContext } from "../../src/contexts/auth";
-import { Image, View, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { Image, View, StyleSheet, Text, TouchableOpacity, useWindowDimensions } from "react-native";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const windowHeight = useWindowDimensions().height;
 
   const { signIn } = useContext(AuthContext);
 
@@ -26,12 +28,12 @@ export default function LoginScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {minHeight: Math.round(windowHeight)}]}>
       <Image source={Pipeline} style={styles.image} />
       <View style={styles.containerButtons}>
         <View style={{ marginVertical: 10 }}>
           <BotaoLargo
-            paddingButton={"15px"}
+            paddingButton={16}
             icone={"google"}
             titulo={"Entrar com Google"}
             texto={"Entrar com Google"}
@@ -40,7 +42,7 @@ export default function LoginScreen() {
         <View style={{ marginVertical: 10 }}>
           <BotaoLargo
             style={styles.marginCustom}
-            paddingButton={"15px"}
+            paddingButton={16}
             icone={"facebook"}
             titulo={"Entrar com Facebook"}
             texto={"Entrar com Facebook"}
@@ -74,7 +76,7 @@ export default function LoginScreen() {
             </Text>
           </TouchableOpacity>
           <View style={{ flexDirection: "row" }}>
-            <Text style={styles.formatText}>Não tem conta?</Text>
+            <Text style={styles.formatText}>Não tem conta? </Text>
             <TouchableOpacity onPress={sendToRegister}>
               <Text style={[styles.formatText, { color: "#0668B8" }]}>
                 Crie uma
@@ -83,7 +85,7 @@ export default function LoginScreen() {
           </View>
         </View>
         <BotaoLargo
-          paddingButton={"15px"}
+          paddingButton={16}
           texto={"Entrar"}
           icone={false}
           onPress={handleLogin}
@@ -119,7 +121,7 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
     top: 0,
     left: "50%",
-    transform: [{ translateX: "-50%" }],
+    transform: [{ translateX: -50 }],
   },
   containerLine: {
     flexDirection: "row",

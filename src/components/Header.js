@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
+
 import { 
     StyleSheet,
     View, 
@@ -20,7 +21,7 @@ export default function Header() {
       </View>
       <TouchableOpacity style={styles.botao}>
         <View style={styles.circuloBotao}>
-            <FontAwesome name={"user"} size={40} height={40} color={"#FFF"}  /> 
+            <FontAwesome name={"user"} size={20} height={20} color={"#FFF"}  /> 
         </View>
       </TouchableOpacity>
     </View>
@@ -65,7 +66,8 @@ const styles = StyleSheet.create({
   botao: {
     borderRadius: 40,
     borderColor: "#0668B8",
-    borderWidth: 1
+    borderWidth: 1,
+    marginBottom: "2%"
   },
 
   circuloBotao: {
@@ -74,8 +76,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "#FFF",
     backgroundColor: "#0668B8",
-    width: 60,
-    height: 60,
+    width: 40,
+    height: 40,
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",

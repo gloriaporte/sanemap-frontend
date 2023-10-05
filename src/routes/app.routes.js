@@ -7,7 +7,8 @@ import {DefaultTheme, Provider} from 'react-native-paper';
 import { useTheme } from 'react-native-paper';
 import { useFocusEffect } from '@react-navigation/native';
 
-import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from '../pages/HomeScreen';
 import MapScreen from '../pages/MapScreen';
@@ -29,8 +30,6 @@ export default function AppRoutes() {
         <Provider theme={theme}>
             <AppTab.Navigator
                 initialRouteName="Home"
-                activeColor="#0668B8"
-                inactiveColor="#fff"
                 backBehavior='initialRoute'
                 screenOptions={({ route, navigation }) => ({
                     headerShown: false,
@@ -44,22 +43,22 @@ export default function AppRoutes() {
                     name="Home" 
                     component={HomeScreen} 
                     options={{
-                        tabBarIcon: ({ color, focused }) => (
-                            <FontAwesome5 name={focused ? "home" : "user"} size={26} color={color} />
+                        tabBarIcon: ({ focused }) => (
+                            <Ionicons name={ focused ? "home" : "home-outline"} size={26} color={ focused ? "#0668B8" : "#566583" } />
                         )
                     }}
                 />
 
-                {/* <AppTab.Screen 
-                    name="Notificações" 
-                    component={NotificacoesScreen} 
+                <AppTab.Screen 
+                    name="Mapa" 
+                    component={MapScreen} 
                     options={{
                         barStyle: { height: 200 },
-                        tabBarIcon: ({ color }) => (
-                            <FontAwesome5 name="exclamation-circle" size={26} color={color} />
+                        tabBarIcon: ({ focused }) => (
+                            <MaterialCommunityIcons name={focused ? "map-marker-radius" : "map-marker-radius-outline"} size={26} color={ focused ? "#0668B8" : "#566583" } />
                         )
                     }}
-                /> */}
+                />
             </AppTab.Navigator>
         </Provider>
     )
