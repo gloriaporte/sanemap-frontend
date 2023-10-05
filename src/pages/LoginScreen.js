@@ -1,18 +1,20 @@
-import { Image, View, StyleSheet, Text, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
-import { useNavigation } from '@react-navigation/native'
-import BotaoLargo from "../components/BotaoLargo";
+import React, { useState, useContext } from "react";
 import Pipeline from "../../assets/pipeline.png";
-
+import BotaoLargo from "../components/BotaoLargo";
+import { useNavigation } from "@react-navigation/native";
 import TextInputStyled from "../components/TextInputStyled";
+import { AuthContext } from "../../src/contexts/auth";
+import { Image, View, StyleSheet, Text, TouchableOpacity } from "react-native";
 
 export default function LoginScreen() {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { signIn } = useContext(AuthContext);
+
   const handleLogin = () => {
-    console.log("logando...");
+    signIn(email, password);
   };
 
   const recoverPassword = () => {
@@ -20,14 +22,14 @@ export default function LoginScreen() {
   };
 
   const sendToRegister = () => {
-    navigation.navigate('RegisterScreen')
+    navigation.navigate("RegisterScreen");
   };
 
   return (
     <View style={styles.container}>
       <Image source={Pipeline} style={styles.image} />
       <View style={styles.containerButtons}>
-        <View style={{ marginVertical: 10}}>
+        <View style={{ marginVertical: 10 }}>
           <BotaoLargo
             paddingButton={"15px"}
             icone={"google"}
@@ -35,7 +37,7 @@ export default function LoginScreen() {
             texto={"Entrar com Google"}
           />
         </View>
-        <View style={{ marginVertical: 10}}>
+        <View style={{ marginVertical: 10 }}>
           <BotaoLargo
             style={styles.marginCustom}
             paddingButton={"15px"}
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   marginCustom: {
-    marginHorizontal: '5rem'
+    marginHorizontal: "5rem",
   },
   containerButtons: {
     flex: 0.5,
@@ -108,7 +110,7 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: "space-evenly",
     paddingHorizontal: 40,
-    marginBottom: 40
+    marginBottom: 40,
   },
   image: {
     position: "absolute",
@@ -118,11 +120,6 @@ const styles = StyleSheet.create({
     top: 0,
     left: "50%",
     transform: [{ translateX: "-50%" }],
-  },
-  formatText: {
-    fontWeight: "bold",
-    fontSize: "1rem",
-    letterSpacing: 1
   },
   containerLine: {
     flexDirection: "row",
@@ -139,6 +136,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     fontSize: 16,
     fontWeight: "bold",
-    color:"#A4ABBD"
+    color: "#A4ABBD",
   },
 });

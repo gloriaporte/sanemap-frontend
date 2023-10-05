@@ -1,41 +1,88 @@
 import React, { useContext, useState } from "react";
-import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../../src/contexts/auth';
+import { useNavigation } from "@react-navigation/native";
+import PipelineMaintenance from "../../assets/pipeline-maintenance.png";
 
-import { 
-    KeyboardAvoidingView, 
-    View, 
-    Image, 
-    Text,
-    StyleSheet
-} from "react-native";
+import { View, Image, Text, StyleSheet } from "react-native";
 
 import BotaoLargo from "../components/BotaoLargo.js";
 
 export default function IndexScreen() {
-    const navigation = useNavigation();
-    const { signIn } = useContext(AuthContext);
+  const navigation = useNavigation();
 
-    function handleLogin() {
-        signIn("Teste", 123);
-    }
-    
-    return (
-        <KeyboardAvoidingView className="bg-light flex-1 flex items-center justify-center p-4 relative">
-            <Text>Oi</Text>
-            <View className="my-4">
-                <BotaoLargo icone={"google"} titulo={"Entrar com Google"} onPress={handleLogin} texto={"Entrar com Google"} />
-            </View>
-            <BotaoLargo icone={false} titulo={"Entrar"} onPress={""} texto={"Entrar"} />
-            <View className="my-4">
-                <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('OnBoardingScreen')} texto={"Página de OnBoarding"} />
-            </View>
-            <View className="my-4">
-                <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('LoginScreen')} texto={"Página de Login"} />
-            </View>
-        </KeyboardAvoidingView>
-    )
+  const sendToLogin = () => {
+    navigation.navigate("LoginScreen");
+  };
+
+  const sendToRegister = () => {
+    navigation.navigate("RegisterScreen");
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={[styles.formatText, {fontSize: '2rem', color: '#5F6F8F', textAlign: 'center', marginTop: '5rem' }]}>
+        Bem-vindo ao {"\n"}<Text style={{ color: '#0668B8'}}>Sanemap</Text>
+      </Text>
+      <View style={[styles.containerButtons, { justifyContent: "flex-end" }]}>
+        <Text style={[styles.formatText, { color: '#A4ABBD', marginVertical: '0.5rem' }]}>Novo por aqui?</Text>
+        <BotaoLargo
+          paddingButton={"15px"}
+          texto={"Registar"}
+          icone={false}
+          onPress={sendToRegister}
+        />
+      </View>
+      <View style={styles.containerLine}>
+        <View style={styles.line} />
+        <Text style={styles.orText}>OU</Text>
+        <View style={styles.line} />
+      </View>
+      <View style={styles.containerButtons}>
+        <BotaoLargo
+          paddingButton={"15px"}
+          texto={"Entrar"}
+          icone={false}
+          onPress={sendToLogin}
+        />
+      </View>
+      <Image source={PipelineMaintenance} style={styles.image} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    position: "relative",
+    flex: 1,
+  },
+  containerButtons: {
+    flex: 0.5,
+    padding: 40,
+  },
+  containerLine: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: 16,
+  },
+  formatText: {
+    fontWeight: "bold",
+    fontSize: "1rem",
+    letterSpacing: 1,
+  },
+  image: {
+    width: "100vw",
+    height: "30vh",
+    resizeMode: "contain",
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: "#A4ABBD",
+  },
+  orText: {
+    marginHorizontal: 16,
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#A4ABBD",
+  },
 });
