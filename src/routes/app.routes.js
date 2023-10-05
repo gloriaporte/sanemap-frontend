@@ -1,15 +1,16 @@
-import { useTheme } from 'react-native-paper';
 import React, { useContext, useCallback } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import {DefaultTheme, Provider} from 'react-native-paper';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AuthContext } from '../contexts/auth';
+import { TouchableOpacity, Text } from 'react-native';
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {DefaultTheme, Provider} from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 import { useFocusEffect } from '@react-navigation/native';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import HomeScreen from '../pages/HomeScreen';
+import MapScreen from '../pages/MapScreen';
 
 const AppTab = createBottomTabNavigator();
 const theme = {
