@@ -30,7 +30,7 @@ export default function IndexScreen() {
                 <BotaoLargo icone={"facebook"} titulo={"Entrar com Facebook"} onPress={""} texto={"Entrar com Facebook"} />
             </View>
             <View className="my-4">
-                <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('IntroScreen')} texto={"Página IntroScreen"} />
+                <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('OnBoardingScreen')} texto={"Página de OnBoarding"} />
             </View>
         </KeyboardAvoidingView>
     )
