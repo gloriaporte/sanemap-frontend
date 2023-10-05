@@ -6,7 +6,8 @@ import {
     KeyboardAvoidingView, 
     View, 
     Image, 
-    Text 
+    Text,
+    StyleSheet
 } from "react-native";
 
 import BotaoLargo from "../components/BotaoLargo.js";
@@ -20,18 +21,18 @@ export default function IndexScreen() {
     }
     
     return (
-        <KeyboardAvoidingView className="bg-light flex-1 flex items-center justify-center p-4">
+        <KeyboardAvoidingView className="bg-light flex-1 flex items-center justify-center p-4 relative">
             <Text>Oi</Text>
             <View className="my-4">
                 <BotaoLargo icone={"google"} titulo={"Entrar com Google"} onPress={handleLogin} texto={"Entrar com Google"} />
             </View>
             <BotaoLargo icone={false} titulo={"Entrar"} onPress={""} texto={"Entrar"} />
-            <View className="my-4">
-                <BotaoLargo icone={"facebook"} titulo={"Entrar com Facebook"} onPress={""} texto={"Entrar com Facebook"} />
-            </View>
-            <View className="my-4">
+            {/* <View className="my-4">
                 <BotaoLargo titulo={"Entrar com Facebook"} onPress={() => navigation.navigate('OnBoardingScreen')} texto={"Página de OnBoarding"} />
-            </View>
+            </View> */}
         </KeyboardAvoidingView>
     )
 }
+
+const styles = StyleSheet.create({
+});

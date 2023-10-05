@@ -73,16 +73,20 @@ export default function AuthProvider({ children }) {
         setLoading(true);
 
         await AsyncStorage.clear().then( ()=> {
-            api.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
-            api.post('logout').then(
-                response => {
-                    setUser(null);
-                    setError(null); 
-                    setLoading(false);
-                }).catch( error => {
-                    setError("Houve um erro ao tentar sair, contate o suporte.");
-                    setLoading(false);
-                });
+            // api.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
+            // api.post('logout').then(
+            //     response => {
+            //         setUser(null);
+            //         setError(null); 
+            //         setLoading(false);
+            //     }).catch( error => {
+            //         setError("Houve um erro ao tentar sair, contate o suporte.");
+            //         setLoading(false);
+            //     });
+
+            setUser(null);
+            setError(null); 
+            setLoading(false);
         });
     }
 
