@@ -1,15 +1,16 @@
-import { useTheme } from 'react-native-paper';
 import React, { useContext, useCallback } from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import {DefaultTheme, Provider} from 'react-native-paper';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AuthContext } from '../contexts/auth';
+import { TouchableOpacity, Text } from 'react-native';
 
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {DefaultTheme, Provider} from 'react-native-paper';
+import { useTheme } from 'react-native-paper';
 import { useFocusEffect } from '@react-navigation/native';
 
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import HomeScreen from '../pages/HomeScreen';
+import MapScreen from '../pages/MapScreen';
 
 const AppTab = createBottomTabNavigator();
 const theme = {
@@ -28,21 +29,23 @@ export default function AppRoutes() {
         <Provider theme={theme}>
             <AppTab.Navigator
                 initialRouteName="Home"
-                activeColor="#EB7C34"
+                activeColor="#0668B8"
                 inactiveColor="#fff"
-                barStyle={{ backgroundColor: "#01639D" }}
                 backBehavior='initialRoute'
                 screenOptions={({ route, navigation }) => ({
-                    headerShown: false
+                    headerShown: false,
+                    tabBarStyle: {
+                        backgroundColor: "#FFF",
+                        borderColor: "#DDD"
+                    }
                })}
             >
                 <AppTab.Screen 
                     name="Home" 
                     component={HomeScreen} 
-                    initialParams={{ secao: null }}
                     options={{
-                        tabBarIcon: ({ color }) => (
-                            <FontAwesome5 name="home" size={26} color={color} />
+                        tabBarIcon: ({ color, focused }) => (
+                            <FontAwesome5 name={focused ? "home" : "user"} size={26} color={color} />
                         )
                     }}
                 />
