@@ -28,21 +28,23 @@ export default function AppRoutes() {
         <Provider theme={theme}>
             <AppTab.Navigator
                 initialRouteName="Home"
-                activeColor="#EB7C34"
+                activeColor="#0668B8"
                 inactiveColor="#fff"
-                barStyle={{ backgroundColor: "#01639D" }}
                 backBehavior='initialRoute'
                 screenOptions={({ route, navigation }) => ({
-                    headerShown: false
+                    headerShown: false,
+                    tabBarStyle: {
+                        backgroundColor: "#FFF",
+                        borderColor: "#DDD"
+                    }
                })}
             >
                 <AppTab.Screen 
                     name="Home" 
                     component={HomeScreen} 
-                    initialParams={{ secao: null }}
                     options={{
-                        tabBarIcon: ({ color }) => (
-                            <FontAwesome5 name="home" size={26} color={color} />
+                        tabBarIcon: ({ color, focused }) => (
+                            <FontAwesome5 name={focused ? "home" : "user"} size={26} color={color} />
                         )
                     }}
                 />

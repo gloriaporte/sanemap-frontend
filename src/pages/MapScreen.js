@@ -12,7 +12,7 @@ import {
 import BotaoLargo from "../components/BotaoLargo.js";
 import Header from "../components/Header";
 
-export default function HomeScreen() {
+export default function MapScreen() {
 
     const navigation = useNavigation();
 
