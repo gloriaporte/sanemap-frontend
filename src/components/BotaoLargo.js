@@ -1,32 +1,70 @@
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { TouchableOpacity, Text, View } from 'react-native';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 
 export default function BotaoLargo({ icone, titulo, texto, onPress }) {
 
   const RenderBotao = () => {
     if(icone == false) {
       return (
-        <View className="d-flex flex-row items-center justify-center bg-primary border-white border-2 h-full rounded-2xl">
-          <Text className="text-center w-full text-slate-50 font-bold text-lg"> { texto } </Text>
+        <View style={styles.containerBotao}>
+          <Text style={styles.textoSemIcone}> { texto } </Text>
         </View>
       );
     } else {
       return (
-        <View className="d-flex flex-row items-center justify-center bg-primary border-white border-2 h-full rounded-2xl">
+        <View style={styles.containerBotao}>
           <View>
             <FontAwesome5 name={icone} size={24} height={28} color={"#ffe"}  />         
           </View>
-          <Text className="ml-3 text-center text-slate-50 font-bold text-lg"> { texto } </Text>
+          <Text style={styles.textoComIcone}> { texto } </Text>
         </View>
       );
     }
   }
 
   return (
-    <TouchableOpacity title={titulo} onPress={onPress} className="border-2 border-primary w-[80vw] h-16 rounded-2xl">
+    <TouchableOpacity title={titulo} onPress={onPress} style={styles.botao}>
      <RenderBotao />
     </TouchableOpacity>
   );
 }
+
+const styles = StyleSheet.create({
+  botao: {
+    borderWidth: 2,
+    borderColor: "#0668B8",
+    width: "70%",
+    height: "34%",
+    borderRadius: 18
+  },
+
+  containerBotao: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#0668B8",
+    borderColor: "#FFF",
+    borderWidth: 2,
+    borderRadius: 18,
+    height: "100%"
+  },
+
+  textoSemIcone: {
+    textAlign: "center",
+    width: "100%",
+    color: "#f8fafc",
+    fontWeight: "bold",
+    fontSize: 22
+  },
+
+  textoComIcone: {
+    textAlign: "center",
+    marginLeft: "2%",
+    color: "#f8fafc",
+    fontWeight: "bold",
+    fontSize: 22
+  },
+});
 
