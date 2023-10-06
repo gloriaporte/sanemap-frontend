@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         display: "flex",
-        position: "relative",
+        position: "relative"
     },
 
     main: {

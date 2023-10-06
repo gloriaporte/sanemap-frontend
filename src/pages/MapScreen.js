@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../src/contexts/auth';
+import MapView from 'react-native-maps';
 
 import { 
     StyleSheet,
@@ -20,7 +21,7 @@ export default function MapScreen() {
         <View style={styles.wrapper}>
             <Header />
             <View style={styles.main}>
-
+                <MapView style={styles.map} />
             </View>
         </View>
     )
@@ -36,7 +37,11 @@ const styles = StyleSheet.create({
     main: {
         flex: 1,
         width: "100%",
-        backgroundColor: "#EEE",
-        padding: 10
-    }
+        backgroundColor: "#EEE"
+    },
+
+    map: {
+        width: '100%',
+        height: '100%',
+    },
 });

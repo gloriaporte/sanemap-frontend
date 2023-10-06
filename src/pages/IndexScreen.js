@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import PipelineMaintenance from "../../assets/pipeline-maintenance.png";
 
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, Text, StyleSheet, StatusBar } from "react-native";
 
 import BotaoLargo from "../components/BotaoLargo.js";
 
@@ -19,13 +19,13 @@ export default function IndexScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.formatText, {fontSize: '2rem', color: '#5F6F8F', textAlign: 'center', marginTop: '5rem' }]}>
+      <Text style={[styles.formatText, {fontSize: 24, color: '#5F6F8F', textAlign: 'center', marginTop: '5rem' }]}>
         Bem-vindo ao {"\n"}<Text style={{ color: '#0668B8'}}>Sanemap</Text>
       </Text>
       <View style={[styles.containerButtons, { justifyContent: "flex-end" }]}>
-        <Text style={[styles.formatText, { color: '#A4ABBD', marginVertical: '0.5rem' }]}>Novo por aqui?</Text>
+        <Text style={[styles.formatText, { color: '#A4ABBD', marginVertical: 2 }]}>Novo por aqui?</Text>
         <BotaoLargo
-          paddingButton={"15px"}
+          paddingButton={16}
           texto={"Registar"}
           icone={false}
           onPress={sendToRegister}
@@ -38,7 +38,7 @@ export default function IndexScreen() {
       </View>
       <View style={styles.containerButtons}>
         <BotaoLargo
-          paddingButton={"15px"}
+          paddingButton={16}
           texto={"Entrar"}
           icone={false}
           onPress={sendToLogin}
@@ -53,6 +53,8 @@ const styles = StyleSheet.create({
   container: {
     position: "relative",
     flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+    paddingTop: 30
   },
   containerButtons: {
     flex: 0.5,
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
   },
   formatText: {
     fontWeight: "bold",
-    fontSize: "1rem",
+    fontSize: 24,
     letterSpacing: 1,
   },
   image: {

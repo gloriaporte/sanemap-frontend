@@ -20,9 +20,9 @@ console.disableYellowBox=true;
 
 export default function App() {
   return (
-    <NavigationContainer className="bg-light" theme={MyTheme}>
+    <NavigationContainer theme={MyTheme}>
        <AuthProvider>
-         <StatusBar />
+         <StatusBar backgroundColor="transparent" translucent={true} />
          <Routes />
        </AuthProvider>
     </NavigationContainer>
