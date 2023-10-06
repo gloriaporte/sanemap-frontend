@@ -11,7 +11,8 @@ import {
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
-  useWindowDimensions
+  useWindowDimensions,
+  StatusBar
 } from "react-native";
 import { Modal, Portal, PaperProvider } from "react-native-paper";
 import { TERMS } from "../../assets/terms_of_use";
@@ -96,7 +97,8 @@ export default function RegisterScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: "relative"
+    position: "relative",
+    marginTop: StatusBar.currentHeight || 0
   },
   containerInputs: {
     flex: 0.3,

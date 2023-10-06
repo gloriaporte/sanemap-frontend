@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import PipelineMaintenance from "../../assets/pipeline-maintenance.png";
 
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, Text, StyleSheet, StatusBar } from "react-native";
 
 import BotaoLargo from "../components/BotaoLargo.js";
 
@@ -23,7 +23,7 @@ export default function IndexScreen() {
         Bem-vindo ao {"\n"}<Text style={{ color: '#0668B8'}}>Sanemap</Text>
       </Text>
       <View style={[styles.containerButtons, { justifyContent: "flex-end" }]}>
-        <Text style={[styles.formatText, { color: '#A4ABBD', marginVertical: '0.5rem' }]}>Novo por aqui?</Text>
+        <Text style={[styles.formatText, { color: '#A4ABBD', marginVertical: 2 }]}>Novo por aqui?</Text>
         <BotaoLargo
           paddingButton={16}
           texto={"Registar"}
@@ -53,6 +53,8 @@ const styles = StyleSheet.create({
   container: {
     position: "relative",
     flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+    paddingTop: 30
   },
   containerButtons: {
     flex: 0.5,

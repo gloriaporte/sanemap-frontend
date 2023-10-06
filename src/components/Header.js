@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
+import { AuthContext } from '../contexts/auth';
 
 import { 
     StyleSheet,
     View, 
     Image, 
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    StatusBar
 } from "react-native";
 
 import Logo from "../../assets/logo_without_name.png";
 
 export default function Header() {
+
+  const { user, signOut } = useContext(AuthContext);
 
   return (
     <View style={styles.header}>
@@ -19,10 +23,8 @@ export default function Header() {
         <Image source={Logo} style={styles.imagem} />
         <Text style={styles.titulo}>SANEMAP</Text>
       </View>
-      <TouchableOpacity style={styles.botao}>
-        <View style={styles.circuloBotao}>
-            <FontAwesome name={"user"} size={20} height={20} color={"#FFF"}  /> 
-        </View>
+      <TouchableOpacity style={styles.botao} onPress={signOut}>
+          <FontAwesome name={"sign-out"} size={30} height={30} color={"#0668B8"}  /> 
       </TouchableOpacity>
     </View>
   );
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       alignItems: "flex-end",
       justifyContent: "space-between",
-      paddingTop: 50,
+      marginTop: StatusBar.currentHeight || 0,
       padding: 10,
       borderBottomWidth: 2,
       borderBottomColor: "#DDD",
@@ -64,9 +66,6 @@ const styles = StyleSheet.create({
   },
 
   botao: {
-    borderRadius: 40,
-    borderColor: "#0668B8",
-    borderWidth: 1,
     marginBottom: "2%"
   },
 
