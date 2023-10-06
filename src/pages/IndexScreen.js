@@ -19,13 +19,13 @@ export default function IndexScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.formatText, {fontSize: '2rem', color: '#5F6F8F', textAlign: 'center', marginTop: '5rem' }]}>
+      <Text style={[styles.formatText, {fontSize: 32, color: '#5F6F8F', textAlign: 'center', marginTop: 80 }]}>
         Bem-vindo ao {"\n"}<Text style={{ color: '#0668B8'}}>Sanemap</Text>
       </Text>
       <View style={[styles.containerButtons, { justifyContent: "flex-end" }]}>
-        <Text style={[styles.formatText, { color: '#A4ABBD', marginVertical: '0.5rem' }]}>Novo por aqui?</Text>
+        <Text style={[styles.formatText, { color: '#A4ABBD', marginVertical: 8 }]}>Novo por aqui?</Text>
         <BotaoLargo
-          paddingButton={"15px"}
+          paddingButton={15}
           texto={"Registar"}
           icone={false}
           onPress={sendToRegister}
@@ -38,7 +38,7 @@ export default function IndexScreen() {
       </View>
       <View style={styles.containerButtons}>
         <BotaoLargo
-          paddingButton={"15px"}
+          paddingButton={15}
           texto={"Entrar"}
           icone={false}
           onPress={sendToLogin}
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   formatText: {
     fontWeight: "bold",
-    fontSize: "1rem",
+    fontSize: 16,
     letterSpacing: 1,
   },
   image: {

@@ -9,9 +9,8 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  ScrollView,
 } from "react-native";
-import { Modal, Portal, PaperProvider } from "react-native-paper";
+import { Modal } from "react-native-paper";
 import { TERMS } from "../../assets/terms_of_use";
 
 export default function RegisterScreen() {
@@ -83,7 +82,7 @@ export default function RegisterScreen() {
         onDismiss={hideModal}
         contentContainerStyle={styles.containerStyle}
       >
-        <Text style={{ fontSize: 14, overflow: 'scroll', textAlign: 'justify', letterSpacing: '.1rem'}}>{TERMS}</Text>
+        <Text style={{ fontSize: 14, overflow: 'scroll', textAlign: 'justify', letterSpacing: 1.6}}>{TERMS}</Text>
       </Modal>
     </View>
   );
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
   },
   formatText: {
     fontWeight: "bold",
-    fontSize: "1rem",
+    fontSize: 16,
     letterSpacing: 1,
   },
   containerStyle: {

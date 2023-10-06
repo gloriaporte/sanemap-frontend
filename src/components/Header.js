@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       alignItems: "flex-end",
       justifyContent: "space-between",
-      paddingTop: 50,
+      paddingTop: 50, // ver se retira
       padding: 10,
       borderBottomWidth: 2,
       borderBottomColor: "#DDD",

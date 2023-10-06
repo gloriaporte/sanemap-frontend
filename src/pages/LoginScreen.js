@@ -27,11 +27,13 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Image source={Pipeline} style={styles.image} />
+      <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: -100 }}>
+        <Image source={Pipeline} style={styles.image} />
+      </View>
       <View style={styles.containerButtons}>
         <View style={{ marginVertical: 10 }}>
           <BotaoLargo
-            paddingButton={"15px"}
+            paddingButton={15}
             icone={"google"}
             titulo={"Entrar com Google"}
             texto={"Entrar com Google"}
@@ -39,8 +41,7 @@ export default function LoginScreen() {
         </View>
         <View style={{ marginVertical: 10 }}>
           <BotaoLargo
-            style={styles.marginCustom}
-            paddingButton={"15px"}
+            paddingButton={15}
             icone={"facebook"}
             titulo={"Entrar com Facebook"}
             texto={"Entrar com Facebook"}
@@ -65,7 +66,7 @@ export default function LoginScreen() {
           style={{
             flexDirection: "column",
             alignItems: "center",
-            marginTop: "-10%",
+            marginBottom: 20,
           }}
         >
           <TouchableOpacity onPress={recoverPassword}>
@@ -83,7 +84,7 @@ export default function LoginScreen() {
           </View>
         </View>
         <BotaoLargo
-          paddingButton={"15px"}
+          paddingButton={15}
           texto={"Entrar"}
           icone={false}
           onPress={handleLogin}
@@ -113,13 +114,9 @@ const styles = StyleSheet.create({
     marginBottom: 40,
   },
   image: {
-    position: "absolute",
-    width: "50%",
-    height: "15%",
+    width: "100%",
+    height: "40%",
     resizeMode: "contain",
-    top: 0,
-    left: "50%",
-    transform: [{ translateX: "-50%" }],
   },
   containerLine: {
     flexDirection: "row",
