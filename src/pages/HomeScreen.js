@@ -15,17 +15,12 @@ export default function HomeScreen() {
   const navigation = useNavigation();
   const { user, signOut } = useContext(AuthContext);
 
-  const createPost = () => {
-    console.log("abrindo modal")
-    setModalVisible(true)
-  }
-
   return (
     <View style={styles.wrapper}>
       <Header />
       <ListaDenuncias />
       <ModalPost isModalVisible={isModalVisible} setModalVisible={setModalVisible}/>
-      <BotaoFlutuante onPress={() => createPost()} />
+      <BotaoFlutuante onPress={ () => { setModalVisible(true)} } />
     </View>
   );
 }
