@@ -4,7 +4,7 @@ import React, { useState, useRef } from 'react';
 import { View, Text, Modal, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import BotaoLargo from './BotaoLargo';
 
-export default function CameraComponente() {
+export default function CameraComponente({ setImageInput }) {
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [isVisible, setIsVisible] = useState(false);
   const [image, setImage] = useState(null)
@@ -31,6 +31,7 @@ export default function CameraComponente() {
       const { uri } = await cameraRef.current.takePictureAsync();
       console.log('Foto tirada:', uri);
       setImage(uri)
+      setImageInput(uri)
       closeCamera();
     }
   };
@@ -46,7 +47,8 @@ export default function CameraComponente() {
   return (
     <View>
       { image ?
-        <Image source={{ uri: image }} style={{ width: ''}} /> : <BotaoLargo
+        <Image source={{ uri: image }} style={{ width: '50%', height: '50%'}} /> 
+        : <BotaoLargo
          paddingButton={15}
          texto={"Abrir Câmera"}
          icone={false}

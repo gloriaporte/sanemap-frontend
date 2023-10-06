@@ -1,7 +1,6 @@
 import { TextInput } from "react-native-paper"
 
 export default function TextInputStyled({ state, setState, label, heightSize }) {
-
   return (
     <TextInput
       mode="outlined"
