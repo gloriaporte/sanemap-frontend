@@ -23,8 +23,6 @@ export default function BotaoLargo({ icone, titulo, texto, paddingButton, fontSi
     },
   
     textoSemIcone: {
-      textAlign: "center",
-      width: "100%",
       color: "#f8fafc",
       fontWeight: "bold",
       fontSize: fontSizeButton
