@@ -20,7 +20,7 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
 
   return (
     <View>
-      <Modal visible={isModalVisible} animationType="slide">
+      <Modal visible={isModalVisible} animationType="slide" transparent={true}>
         <View
           style={{
             flex: 1,
