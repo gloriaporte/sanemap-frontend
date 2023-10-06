@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 
-export default function BotaoLargo({ icone, titulo, texto, paddingButton, fontSizeButton, onPress }) {
+export default function BotaoLargo({ icone, titulo, texto, paddingButton, fontSizeButton = 22, onPress }) {
   const styles = StyleSheet.create({
     botao: {
       borderWidth: 2,
