@@ -31,7 +31,7 @@ export default function RegisterScreen() {
    const windowHeight = useWindowDimensions().height;
 
   const handleRegister = () => {
-    console.log("aaaaa");
+    console.log("Registro");
   };
   return (
     <View style={[styles.container, {minHeight: Math.round(windowHeight)}]}>
@@ -88,7 +88,15 @@ export default function RegisterScreen() {
         onDismiss={hideModal}
         contentContainerStyle={styles.containerStyle}
       >
-        <Text style={{ fontSize: 14, overflow: 'scroll', textAlign: 'justify', letterSpacing: 2}}>{TERMS}</Text>
+        <ScrollView>
+          <Text style={{ fontSize: 14, overflow: 'scroll', textAlign: 'justify', letterSpacing: 2}}>{TERMS}</Text>
+          <BotaoLargo
+            paddingButton={16}
+            texto={"Fechar"}
+            icone={false}
+            onPress={hideModal}
+          />
+        </ScrollView>
       </Modal>
     </View>
   );
@@ -123,8 +131,9 @@ const styles = StyleSheet.create({
   containerStyle: {
     backgroundColor: "#F4F9FF",
     margin: "auto",
+    marginLeft: "10%",
     width: "80%",
-    height: "70%",
+    height: "80%",
     padding: 20,
     alignItems: "center",
     justifyContent: "center",
