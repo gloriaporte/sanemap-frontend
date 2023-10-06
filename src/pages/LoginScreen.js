@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     padding: 40
   },
   containerForm: {
-    flex: 0.5,
+    flex: 1,
     justifyContent: "space-evenly",
     paddingHorizontal: 40,
     marginTop: 140,
