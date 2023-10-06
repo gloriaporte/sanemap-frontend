@@ -31,12 +31,11 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  wrapper: {
-    position: "relative",
-    flex: 1,
-    display: "flex",
-  },
-
+    wrapper: {
+        flex: 1,
+        display: "flex",
+        position: "relative"
+    },
   main: {
     flex: 1,
     width: "100%",

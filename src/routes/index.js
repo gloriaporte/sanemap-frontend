@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from '../contexts/auth';
-import { View, ActivityIndicator } from 'react-native';
+import { View, ActivityIndicator, StatusBar } from 'react-native';
 
 import AuthRoutes from "./auth.routes";
 import AppRoutes from "./app.routes";
@@ -11,7 +11,7 @@ export default function Routes() {
 
     if(loading) {
         return(
-            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: StatusBar.currentHeight || 0}}>
                 <ActivityIndicator size="large" color="#131313" />
             </View>
         )

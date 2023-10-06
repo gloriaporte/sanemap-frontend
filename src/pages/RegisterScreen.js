@@ -9,6 +9,10 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
+  useWindowDimensions,
+  StatusBar
 } from "react-native";
 import { Modal } from "react-native-paper";
 import { TERMS } from "../../assets/terms_of_use";
@@ -24,13 +28,15 @@ export default function RegisterScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+   const windowHeight = useWindowDimensions().height;
+
   const handleRegister = () => {
     console.log("aaaaa");
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {minHeight: Math.round(windowHeight)}]}>
       <View
-        style={{ flex: 0.2, justifyContent: "center", alignItems: "center" }}
+        style={{ flex: 0.2, justifyContent: "center", alignItems: "center", marginTop: 20 }}
       >
         <Image
           source={LogoWithoutName}
@@ -66,7 +72,7 @@ export default function RegisterScreen() {
           do Aplicativo
         </Text>
         <BotaoLargo
-          paddingButton={"10px"}
+          paddingButton={16}
           texto={"Registrar"}
           icone={false}
           onPress={handleRegister}
@@ -82,7 +88,7 @@ export default function RegisterScreen() {
         onDismiss={hideModal}
         contentContainerStyle={styles.containerStyle}
       >
-        <Text style={{ fontSize: 14, overflow: 'scroll', textAlign: 'justify', letterSpacing: 1.6}}>{TERMS}</Text>
+        <Text style={{ fontSize: 14, overflow: 'scroll', textAlign: 'justify', letterSpacing: 2}}>{TERMS}</Text>
       </Modal>
     </View>
   );
@@ -92,6 +98,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: "relative",
+    marginTop: StatusBar.currentHeight || 0
   },
   containerInputs: {
     flex: 0.3,
