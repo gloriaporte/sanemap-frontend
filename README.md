@@ -1,0 +1,12 @@
+# :computer: #HackforChange: SANEMAP
+Este repositório tem como por objetivo hospedar o código do projeto SANEMAP, referente ao hackathon online [Hack for Change](https://www.hackforchange.com.br) em conjunto da FIAP e da Alura, sendo o tema deste evento **City Solutions**, voltado para ajudar a instituição
+Passos Mágicos em Embu-Guaçu/SP com soluções para a cidade.
+
+## :scroll:	Desafio e Problemas
+Nosso grupo escolheu o tema **Saneamento Básico**, no qual após uma conversa com uma mentora da Passos Mágicos, nos foi informado a situação de que nem todas as áreas da cidade tem saneamento básico, água e esgoto e dependendo nem acesso à internet.
+Foi verificado no portal da prefeitura de Embu-Guaçu que foi realizado um contrato com a SABESP, desde 2021, com o fim de criar um plano para a cidade, uma vez que o município de Embu Guaçu apresenta um déficit na infraestrutura de esgotamento
+sanitário, como se percebe ao longo do presente diagnóstico. Boa parte dos munícipes não contam com os serviços de coleta de esgoto, apesar da boa cobertura em serviços de abastecimento de água, segundo o [Plano Municipal de Saneamento Básico](https://ecrie.com.br/sistema/conteudos/arquivo/a_7_1_1_14122021130925.pdf).
+
+## :triangular_flag_on_post: Objetivos
+Visto o plano de saneamento, o objetivo do nosso grupo é um aplicativo mobile para que os usuários possam publicar postagens denunciando locais que estejam com alguma irregularidade em relação a saneamento básico com o intuito de gerar comoção e engajamento para chegar até a prefeitura, dessa forma
+estas áreas carentes possam receber atenção e também para que o sistema sirva como uma forma de monitorar se todas as áreas do plano estão sendo seguidas.
