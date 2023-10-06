@@ -1,5 +1,13 @@
 {
   "expo": {
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+        }
+      ]
+    ],
     "name": "SANEMAP",
     "slug": "sanemap",
     "version": "1.0.0",
@@ -7,13 +15,11 @@
     "icon": "./assets/logo_without_name.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo_with_name.svg", 
+      "image": "./assets/logo_with_name.svg",
       "resizeMode": "contain",
       "backgroundColor": "#F4F9FF"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },

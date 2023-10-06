@@ -52,7 +52,7 @@ export default function LoginScreen() {
             </Text>
           </TouchableOpacity>
           <View style={{ flexDirection: "row" }}>
-            <Text style={styles.formatText}>Não tem conta? </Text>
+            <Text style={styles.formatText}>NÃ£o tem conta? </Text>
             <TouchableOpacity onPress={sendToRegister}>
               <Text style={[styles.formatText, { color: "#0668B8" }]}>
                 Crie uma

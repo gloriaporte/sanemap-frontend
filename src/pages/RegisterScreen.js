@@ -14,7 +14,7 @@ import {
   useWindowDimensions,
   StatusBar
 } from "react-native";
-import { Modal, Portal, PaperProvider } from "react-native-paper";
+import { Modal } from "react-native-paper";
 import { TERMS } from "../../assets/terms_of_use";
 
 export default function RegisterScreen() {
