@@ -10,3 +10,14 @@ sanitário, como se percebe ao longo do presente diagnóstico. Boa parte dos mun
 ## :triangular_flag_on_post: Objetivos
 Visto o plano de saneamento, o objetivo do nosso grupo é um aplicativo mobile para que os usuários possam publicar postagens denunciando locais que estejam com alguma irregularidade em relação a saneamento básico com o intuito de gerar comoção e engajamento para chegar até a prefeitura, dessa forma
 estas áreas carentes possam receber atenção e também para que o sistema sirva como uma forma de monitorar se todas as áreas do plano estão sendo seguidas.
+
+## Como utilizar o aplicativo
+1. Clone o repositório no seu computador
+2. Instale as dependências com npm install e/ou yarn install. 
+3. Instale o Expo Go em seu dispositivo virtual ou físico e crie uma conta.
+4. Utilize o comando **npx expo start** e conecte seu dispositivo virtual ou físico de acordo com as instruções (query code, usb e/ou localhost pelo Expo). Se não conseguir se conectar, utilize o **expo start --tunnel** para tentar a conexão.
+5. Utilize os comandos no terminal para rodar o aplicativo em seu dispositivo.
+
+## Materiais
+
+[Repositório Back-end](https://github.com/sanemap/backend)
