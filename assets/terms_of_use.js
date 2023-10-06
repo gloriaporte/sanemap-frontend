@@ -47,5 +47,4 @@ Aceitação dos Termos
 
 Ao usar o SaneMap, você concorda com os termos e condições desta política de privacidade.
 
-Lembre-se de que este é apenas um exemplo e você deve adaptá-lo às necessidades específicas do seu aplicativo e às leis de proteção de dados aplicáveis em sua jurisdição. É altamente recomendável consultar um advogado especializado em privacidade de dados para garantir que seus termos de uso e política de privacidade estejam em conformidade com as regulamentações locais.
-`;
+Lembre-se de que este é apenas um exemplo e você deve adaptá-lo às necessidades específicas do seu aplicativo e às leis de proteção de dados aplicáveis em sua jurisdição. É altamente recomendável consultar um advogado especializado em privacidade de dados para garantir que seus termos de uso e política de privacidade estejam em conformidade com as regulamentações locais.`;
