@@ -3,6 +3,7 @@ import { Modal, View, Text, TextInput } from "react-native";
 import { Button } from "react-native-paper";
 import TextInputStyled from "./TextInputStyled";
 import CameraComponent from "./CameraComponent";
+import LocationComponent from "./LocationComponent";
 import BotaoLargo from './BotaoLargo';
 
 
@@ -48,9 +49,6 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
               onPress={handlePost}
             />
           </View>
-          <View style={{ position: "relative" }}>
-            <CameraComponent />
-          </View>
           <View>
             <TextInputStyled
               label="Descricão do problema"
@@ -58,6 +56,12 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
               setState={setDescription}
               heightSize={200}
             />
+          </View>
+          <View style={{ position: "relative" }}>
+            <CameraComponent />
+          </View>
+          <View style={{ position: "relative" }}>
+            <LocationComponent />
           </View>
         </View>
       </Modal>

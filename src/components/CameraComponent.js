@@ -46,7 +46,7 @@ export default function CameraComponente() {
   return (
     <View>
       { image ?
-        <Image source={{ uri: image }} style={{ flex: 1}} /> : <BotaoLargo
+        <Image source={{ uri: image }} style={{ width: ''}} /> : <BotaoLargo
          paddingButton={15}
          texto={"Abrir Câmera"}
          icone={false}
