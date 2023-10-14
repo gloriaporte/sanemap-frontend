@@ -1,17 +1,18 @@
-import React, { useContext, useCallback } from 'react';
-import { AuthContext } from '../contexts/auth';
-import { TouchableOpacity, Text } from 'react-native';
-
+import React  from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {DefaultTheme, Provider} from 'react-native-paper';
-import { useTheme } from 'react-native-paper';
-import { useFocusEffect } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from '../pages/HomeScreen';
 import MapScreen from '../pages/MapScreen';
+import DenunciasScreen from '../pages/DenunciasScreen';
+import PerfilScreen from '../pages/PerfilScreen';
+import RecompensasScreen from '../pages/RecompensasScreen';
+
+import { TouchableOpacity, View  } from 'react-native';
 
 const AppTab = createBottomTabNavigator();
 const theme = {
@@ -24,7 +25,17 @@ const theme = {
 
 theme.colors.secondaryContainer = 'transparent';
 
+
+const BotaoCentralizado = ({ focused, onPress }) => {
+    return (
+        <View style={{ position: "absolute", top: -20, justifyContent: "center", alignItems: "center", borderWidth: 3, borderRadius: 30, padding: 2, borderColor: "#0668B8", backgroundColor: "#FFF"}} >
+            <MaterialCommunityIcons name={ focused ? "map-marker-radius" : "map-marker-radius-outline"} size={40} color={"#0668B8"} />
+        </View>
+    );
+};
+
 export default function AppRoutes() {
+    const navigation = useNavigation();
 
     return(
         <Provider theme={theme}>
@@ -34,8 +45,10 @@ export default function AppRoutes() {
                 screenOptions={({ route, navigation }) => ({
                     headerShown: false,
                     tabBarStyle: {
-                        backgroundColor: "#FFF",
-                        borderColor: "#DDD"
+                        height: 52,
+                        backgroundColor: "#0668B8",
+                        position: "relative",
+                        paddingBottom: 4
                     }
                })}
             >
@@ -43,19 +56,60 @@ export default function AppRoutes() {
                     name="Home" 
                     component={HomeScreen} 
                     options={{
+                        tabBarLabelStyle: {
+                            color: "#FFF"
+                        },
                         tabBarIcon: ({ focused }) => (
-                            <Ionicons name={ focused ? "home" : "home-outline"} size={26} color={ focused ? "#0668B8" : "#566583" } />
+                            <Ionicons name={ focused ? "home" : "home-outline"} size={26} color={ "#FFF" } />
                         )
                     }}
                 />
-
+                <AppTab.Screen 
+                    name="Denúncias" 
+                    component={DenunciasScreen} 
+                    options={{
+                        tabBarLabelStyle: {
+                            color: "#FFF"
+                        },
+                        tabBarIcon: ({ focused }) => (
+                            <Ionicons name={ focused ? "document" : "document-outline"} size={26} color={ "#FFF" } />
+                        )
+                    }}
+                />
                 <AppTab.Screen 
                     name="Mapa" 
                     component={MapScreen} 
                     options={{
+                        tabBarLabelStyle: {
+                            color: "#FFF"
+                        },
+                        tabBarIcon: ({ focused }) => (
+                            <BotaoCentralizado focused={ focused } />
+                        )
+                    }}
+                />
+                <AppTab.Screen 
+                    name="Recompensas" 
+                    component={RecompensasScreen} 
+                    options={{
+                        tabBarLabelStyle: {
+                            color: "#FFF"
+                        },
+                        tabBarIcon: ({ focused }) => (
+                            <MaterialCommunityIcons name={ focused ? "map-marker-radius" : "map-marker-radius-outline"} size={26} color={ "#FFF" } />
+                        )
+                    }}
+                />
+                <AppTab.Screen 
+                    name="Perfil" 
+                    component={PerfilScreen} 
+                    options={{
+                        tabBarLabelStyle: {
+                            color: "#FFF"
+                        },
                         barStyle: { height: 200 },
                         tabBarIcon: ({ focused }) => (
-                            <MaterialCommunityIcons name={focused ? "map-marker-radius" : "map-marker-radius-outline"} size={26} color={ focused ? "#0668B8" : "#566583" } />
+                            <Ionicons name={ focused ? "person" : "person-outline"} size={26} color={ "#FFF" } />
                         )
                     }}
                 />
