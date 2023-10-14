@@ -39,14 +39,15 @@ export default function AuthProvider({ children }) {
                 api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
                 api.get("app/profile").
                 then(
-                    response => {
+                    res => {
 
                         const data = {
-                            email: response.data.email,
-                            nome: response.data.nome,
-                            cpf: response.data.cpf,
-                            telefone: response.data.telefone,
-                            avatar: response.data.avatar
+                            email: res.data.email,
+                            nome: res.data.nome,
+                            cpf: res.data.cpf,
+                            telefone: res.data.telefone,
+                            avatar: res.data.avatar,
+                            token: response.data.token
                         };
 
                         setError(null);
@@ -55,16 +56,14 @@ export default function AuthProvider({ children }) {
                     }
                 ).catch( error => {
                     setError({id: "3", msg: "Ocorreu um erro, contate o suporte."});
-                    console.log(error);
                 });
             }
         ).catch( error => {
-            if(error.code == "ERR_BAD_REQUEST") {
+            if(error.response.status == 401) {
                 setError({id: "3", msg: "Credenciais incorretas."});
             } else {
                 setError({id: "3", msg: "Ocorreu um erro, contate o suporte."});
             }
-            console.log(error);
         });
     }
 

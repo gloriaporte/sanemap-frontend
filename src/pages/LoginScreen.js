@@ -1,25 +1,45 @@
 import React, { useState, useContext } from "react";
+import { useNavigation } from "@react-navigation/native";
+
+import { AuthContext } from "../../src/contexts/auth";
+
 import Pipeline from "../../assets/pipeline.png";
 import BotaoLargo from "../components/BotaoLargo";
-import { useNavigation } from "@react-navigation/native";
 import TextInputStyled from "../components/TextInputStyled";
-import { AuthContext } from "../../src/contexts/auth";
-import { Image, View, StyleSheet, Text, TouchableOpacity, useWindowDimensions, StatusBar, KeyboardAvoidingView, ScrollView } from "react-native";
+
+import { 
+  Image, 
+  View, 
+  StyleSheet, 
+  Text, 
+  TouchableOpacity, 
+  useWindowDimensions, 
+  StatusBar,
+  KeyboardAvoidingView, 
+  ScrollView 
+} from "react-native";
 
 export default function LoginScreen() {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const windowHeight = useWindowDimensions().height;
-
   const { signIn, error } = useContext(AuthContext);
   const [erro, setErro] = useState(error);
 
   const handleLogin = () => {
-    if(email )
-    signIn(email, password);
-    setErro(error);
+    if(email.trim().length === 0 && password.trim().length === 0) {
+      setErro({id: "1", msg: "Preencha todos os campos."});
+    } else if (password.trim().length === 0) {
+      setErro({id: "2", msg: "Preencha o campo de senha."});
+    } else if (email.trim().length === 0) {
+      setErro({id: "3", msg: "Preencha o campo de email."});
+    } else if (!email.includes('@')) {
+      setErro({id: "3", msg: "Insira um email válido."});
+    } else {
+      signIn(email, password);
+      setErro(error);
+    }
   };
 
   const recoverPassword = () => {
@@ -41,13 +61,17 @@ export default function LoginScreen() {
             label="Email" 
             heightSize={50}
             seguro={false}
+            tipo={"email-address"}
+            erro={(erro && (erro.id == 1 || erro.id == 3)) ? true : false}
           />
           <TextInputStyled
             state={password}
             setState={setPassword}
-            label="Password"
+            label="Senha"
             heightSize={50}
             seguro={true}
+            tipo={"default"}
+            erro={(erro && (erro.id == 2 || erro.id == 1)) ? true : false}
           />
         </View>
         <View

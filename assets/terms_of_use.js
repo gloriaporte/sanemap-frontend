@@ -1,6 +1,4 @@
 export const TERMS = `
-Termos de Uso e Política de Privacidade
-
 Bem-vindo ao SaneMap!
 
 Antes de usar nosso aplicativo, por favor, leia atentamente os seguintes termos de uso e política de privacidade. Ao utilizar o SaneMap, você concorda e aceita os termos e condições aqui apresentados. Se você não concordar com estes termos, por favor, não use nosso aplicativo.
