@@ -12,11 +12,13 @@ Visto o plano de saneamento, o objetivo do nosso grupo é um aplicativo mobile p
 estas áreas carentes possam receber atenção e também para que o sistema sirva como uma forma de monitorar se todas as áreas do plano estão sendo seguidas.
 
 ## Como utilizar o aplicativo
+### Método 1: Clonando o repositório e testando localmente
 1. Clone o repositório no seu computador
 2. Instale as dependências com npm install e/ou yarn install. 
 3. Instale o Expo Go em seu dispositivo virtual ou físico e crie uma conta.
 4. Utilize o comando **npx expo start** e conecte seu dispositivo virtual ou físico de acordo com as instruções (query code, usb e/ou localhost pelo Expo). Se não conseguir se conectar, utilize o **expo start --tunnel** para tentar a conexão.
 5. Utilize os comandos no terminal para rodar o aplicativo em seu dispositivo.
+### Método 2: Instalando a .apk no celular
 
 ## Materiais
 
