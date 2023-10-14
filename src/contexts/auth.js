@@ -25,44 +25,46 @@ export default function AuthProvider({ children }) {
         loadStorage();
     }, []);
 
-    async function signIn(usuario, senha) {
+    async function signIn(email, senha) {
 
         const payload = {
-            nome: "Teste",
-            email: "teste",
-            password: 123
+            email: email,
+            password: senha
         }
 
-        setError(null);
-        setUser(payload);
-        storageUser(payload);
+        api.defaults.headers.common["Accept"] = 'application/json';
+        api.defaults.headers.common["Content-type"] = 'application/json';
+        api.post('login', payload).then(
+            response => {
+                api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
+                api.get("app/profile").
+                then(
+                    res => {
 
-        // api.defaults.headers.common["Accept"] = 'application/json';
-        // api.defaults.headers.common["Content-type"] = 'application/json';
-        // api.post('login', payload).then(
-        //     response => {
-        //         api.defaults.headers.common["Authorization"] = `Bearer ${response.data.token}`;
-        //         api.get("").
-        //         then(
-        //             response => {
-                      
-        //             }
-        //         ).catch( error => {
-        //             console.log(error.message);
-        //         });
+                        const data = {
+                            email: res.data.email,
+                            nome: res.data.nome,
+                            cpf: res.data.cpf,
+                            telefone: res.data.telefone,
+                            avatar: res.data.avatar,
+                            token: response.data.token
+                        };
 
-        //         setError(null);
-        //         setUser(payload);
-        //         storageUser(payload);
-        //     }
-        // ).catch( error => {
-        //     if(error.code == "ERR_BAD_REQUEST") {
-        //         setError({id: "3", msg: "RM e/ou senha incorretos."});
-        //     } else {
-        //         setError({id: "3", msg: "Ocorreu um erro, contate o suporte."});
-        //     }
-        //     console.log(error);
-        // });
+                        setError(null);
+                        setUser(data);
+                        storageUser(data);
+                    }
+                ).catch( error => {
+                    setError({id: "3", msg: "Ocorreu um erro, contate o suporte."});
+                });
+            }
+        ).catch( error => {
+            if(error.response.status == 401) {
+                setError({id: "3", msg: "Credenciais incorretas."});
+            } else {
+                setError({id: "3", msg: "Ocorreu um erro, contate o suporte."});
+            }
+        });
     }
 
     async function storageUser(data) {
