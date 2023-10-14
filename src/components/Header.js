@@ -23,9 +23,6 @@ export default function Header() {
         <Image source={Logo} style={styles.imagem} />
         <Text style={styles.titulo}>SANEMAP</Text>
       </View>
-      <TouchableOpacity style={styles.botao} onPress={signOut}>
-          <FontAwesome name={"sign-out"} size={30} height={30} color={"#0668B8"}  /> 
-      </TouchableOpacity>
     </View>
   );
 }
