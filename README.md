@@ -1,6 +1,6 @@
 # :computer: #HackforChange: SANEMAP
 Este repositório tem como por objetivo hospedar o código do projeto SANEMAP, referente ao hackathon online [Hack for Change](https://www.hackforchange.com.br) em conjunto da FIAP e da Alura, sendo o tema deste evento **City Solutions**, voltado para ajudar a instituição
-Passos Mágicos em Embu-Guaçu/SP com soluções para a cidade.
+[Passos Mágicos](https://passosmagicos.org.br) em Embu-Guaçu/SP com soluções para a cidade.
 
 ## :scroll:	Desafio e Problemas
 Nosso grupo escolheu o tema **Saneamento Básico**, no qual após uma conversa com uma mentora da Passos Mágicos, nos foi informado a situação de que nem todas as áreas da cidade tem saneamento básico, água e esgoto e dependendo nem acesso à internet.
@@ -21,5 +21,9 @@ estas áreas carentes possam receber atenção e também para que o sistema sirv
 ### Método 2: Instalando a .apk no celular
 
 ## Materiais
-
-[Repositório Back-end](https://github.com/sanemap/backend)
+* [Site do projeto](https://sanemap.phabloraylan.com)
+* [Repositório Back-end](https://github.com/sanemap/backend)
+* Documentação
+* [Vídeo Pitch](https://www.youtube.com/watch?v=4qjTk8DxQLM&feature=youtu.be)
+* [Protótipo no Figma](https://www.figma.com/file/oKMNiDqCHDQdulHtV2yqk8/SaneMap?type=design&node-id=0%3A1&mode=design&t=NmZzS7ff0im5OSVC-1)
+* Build/.apk para instalar o aplicativo (por enquanto android)
