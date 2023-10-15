@@ -1,7 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../src/contexts/auth';
+
 import MapView from 'react-native-maps';
+import { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import { 
     StyleSheet,
@@ -21,7 +23,10 @@ export default function MapScreen() {
         <View style={styles.wrapper}>
             <Header />
             <View style={styles.main}>
-                <MapView style={styles.map} />
+                <MapView 
+                    style={styles.map} 
+                    provider={PROVIDER_GOOGLE}
+                />
             </View>
         </View>
     )
