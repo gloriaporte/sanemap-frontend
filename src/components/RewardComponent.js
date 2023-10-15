@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, } from "react-native";
 import SaneCoin from '../../assets/SaneCoin';
 
-export default function RewardComponent({ data }) {
+export default function RewardComponent({ data, sanecoins }) {
   return (
     <View>
       <View style={styles.containerReward}>
@@ -45,7 +45,7 @@ export default function RewardComponent({ data }) {
           </Text>
         </View>
       </View>
-      <View style={styles.priceReward}>
+      <View style={[styles.priceReward, { backgroundColor: sanecoins >= data.price ? "#E3A72F" : "#AAA" }]}>
         <SaneCoin />
         <Text
           style={{
@@ -97,13 +97,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
-    zIndex: "-1",
+    zIndex: -1,
     marginHorizontal: 20,
     marginTop: -20,
     marginBottom: 20,
     paddingTop: 30,
     paddingBottom: 10,
-    backgroundColor: "#E3A72F",
     borderEndStartRadius: 15,
     borderEndEndRadius: 15,
   },
