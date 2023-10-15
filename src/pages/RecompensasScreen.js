@@ -29,7 +29,7 @@ const rewards = [
 export default function RecompensasScreen() {
   const navigation = useNavigation();
   const date = "14/10/2023";
-  const test = 0;
+  const test = 150;
 
   return (
     <View style={styles.wrapper}>
@@ -37,9 +37,9 @@ export default function RecompensasScreen() {
       <ScrollView style={styles.main}>
         <Text
           style={{
-            color: "#99A4B9",
+            color: "#444",
             fontWeight: "bold",
-            fontSize: 15,
+            fontSize: 20,
             textAlign: "center",
             margin: 20,
           }}
@@ -77,7 +77,7 @@ export default function RecompensasScreen() {
           Recompensas
         </Text>
         {rewards.map((item) => (
-          <RewardComponent key={item.id} data={item} />
+          <RewardComponent key={item.id} data={item} sanecoins={test} />
         ))}
       </ScrollView>
     </View>

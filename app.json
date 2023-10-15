@@ -18,7 +18,7 @@
     "slug": "sanemap",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/logo_withoutout_name.png",
+    "icon": "./assets/logo_without_name.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/logo_without_name.png",
