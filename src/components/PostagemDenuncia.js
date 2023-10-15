@@ -95,7 +95,7 @@ export default function PostagemDenuncia({ data }) {
 
 const styles = StyleSheet.create({
   container: {
-      backgroundColor: "#FFF",
+      backgroundColor: "#F4F9FF",
       padding: 10,
       borderBottomWidth: 2,
       borderBottomColor: "#EEE",

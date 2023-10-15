@@ -29,7 +29,7 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   header: {
-      backgroundColor: "#FFF",
+      backgroundColor: "#F4F9FF",
       display: "flex",
       flexDirection: "row",
       alignItems: "flex-end",
