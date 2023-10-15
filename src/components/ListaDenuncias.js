@@ -31,8 +31,7 @@ export default function ListaDenuncias() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFF",
-    padding: "2%",
+    backgroundColor: "#F4F9FF",
     flex: 1
   }
 });
