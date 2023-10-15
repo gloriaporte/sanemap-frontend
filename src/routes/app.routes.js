@@ -11,6 +11,8 @@ import MapScreen from '../pages/MapScreen';
 import DenunciasScreen from '../pages/DenunciasScreen';
 import PerfilScreen from '../pages/PerfilScreen';
 import RecompensasScreen from '../pages/RecompensasScreen';
+import SaneCoin from '../../assets/SaneCoin';
+import SaneCoinFilled from '../../assets/SaneCoinFilled';
 
 import { TouchableOpacity, View  } from 'react-native';
 
@@ -28,7 +30,7 @@ theme.colors.secondaryContainer = 'transparent';
 
 const BotaoCentralizado = ({ focused, onPress }) => {
     return (
-        <View style={{ position: "absolute", top: -20, justifyContent: "center", alignItems: "center", borderWidth: 3, borderRadius: 30, padding: 2, borderColor: "#0668B8", backgroundColor: "#FFF"}} >
+        <View style={{ position: "absolute", top: -20, justifyContent: "center", alignItems: "center", borderWidth: 3, borderRadius: 30, padding: 4, borderColor: "#0668B8", backgroundColor: "#FFF"}} >
             <MaterialCommunityIcons name={ focused ? "map-marker-radius" : "map-marker-radius-outline"} size={40} color={"#0668B8"} />
         </View>
     );
@@ -48,7 +50,8 @@ export default function AppRoutes() {
                         height: 52,
                         backgroundColor: "#0668B8",
                         position: "relative",
-                        paddingBottom: 4
+                        paddingBottom: 4,
+                        elevation: 0
                     }
                })}
             >
@@ -96,7 +99,7 @@ export default function AppRoutes() {
                             color: "#FFF"
                         },
                         tabBarIcon: ({ focused }) => (
-                            <MaterialCommunityIcons name={ focused ? "map-marker-radius" : "map-marker-radius-outline"} size={26} color={ "#FFF" } />
+                            focused ? <SaneCoinFilled /> : <SaneCoin />
                         )
                     }}
                 />
