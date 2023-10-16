@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import moment from "moment/min/moment-with-locales";
 import PersonPerfil from "../../assets/PersonPerfil.png";
 import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from '@expo/vector-icons';
 
 import {
   StyleSheet,
@@ -21,9 +22,30 @@ export default function PostagemDenuncia({ data }) {
   }
   moment.locale("pt-br");
   let numeroColunas = data.images.length > 1 ? 2 : 1;
-  
+
+  function addClick () {
+    data.reports++;
+    console.log(data.reports);
+  }
+
   return (
     <View style={styles.container}>
+        { data.status == "open"
+          ?
+          <View style={{ flexDirection: "row", justifyContent: "flex-end", alignItems: "center" }}>
+            <Text style={styles.statusReprovado}>
+              Pendente
+            </Text>
+            <AntDesign name="closesquareo" size={20} color="#900" />
+          </View>
+          :
+          <View style={{ flexDirection: "row", justifyContent: "flex-end", alignItems: "center" }}>
+            <Text style={styles.statusAprovado}>
+              Resolvido
+            </Text>
+            <AntDesign name="checksquareo" size={20} color="#190" />
+          </View>
+        }
       <View style={styles.cabecalho}>
         <Image
           source={data.user.avatar === "" ? PersonPerfil : { uri: data.user.avatar }}
@@ -133,7 +155,7 @@ export default function PostagemDenuncia({ data }) {
         )}
       </View>
       <View style={styles.rodape}>
-        <TouchableOpacity style={styles.botao}>
+        <TouchableOpacity style={styles.botao} onPress={ () => addClick() }>
           <FontAwesome
             name={"arrow-up"}
             size={14}
@@ -258,6 +280,22 @@ const styles = StyleSheet.create({
   redirecionar: {
     color: "#0668B8",
     fontWeight: "600",
-    textAlign: "center"
-  }
+    textAlign: "center",
+    marginBottom: 10
+  },
+
+  statusReprovado: {
+    color: "#900",
+    fontWeight: "bold",
+    fontSize: 20,
+    marginRight: 2
+  },
+
+  statusAprovado: {
+    color: "#290",
+    fontWeight: "bold",
+    fontSize: 20,
+    marginRight: 2
+  },
+
 });
