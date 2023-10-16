@@ -10,14 +10,6 @@ import ModalPost from "../components/ModalPost";
 
 export default function HomeScreen() {
   const [ isModalVisible, setModalVisible ] = useState(false);
-  const [ reload, setReload ] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setReload(true);
-    }, isModalVisible);
-  });
-
 
   return (
     <View style={styles.wrapper}>
@@ -29,7 +21,6 @@ export default function HomeScreen() {
       <ModalPost
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
-        reload={reload}
       />
       <BotaoFlutuante
         onPress={() => {

@@ -80,7 +80,7 @@ export default function AppRoutes() {
                 <AppTab.Screen 
                     name="Mapa" 
                     component={MapScreen} 
-                    initialParams={{ localizacao: null }}
+                    initialParams={{localizacao: "-23.8309,-46.8160"}}
                     options={{
                         tabBarLabelStyle: {
                             color: "#FFF"
