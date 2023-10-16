@@ -25,8 +25,12 @@ const theme = {
     }
 }
 
-theme.colors.secondaryContainer = 'transparent';
+export const goMap = (local) => {
+    const navigation = useNavigation();
+    navigation.navigate("MapScreen", { localizacao: local });
+}
 
+theme.colors.secondaryContainer = 'transparent';
 
 const BotaoCentralizado = ({ focused, onPress }) => {
     return (
@@ -37,8 +41,7 @@ const BotaoCentralizado = ({ focused, onPress }) => {
 };
 
 export default function AppRoutes() {
-    const navigation = useNavigation();
-
+    
     return(
         <Provider theme={theme}>
             <AppTab.Navigator
@@ -82,6 +85,7 @@ export default function AppRoutes() {
                 <AppTab.Screen 
                     name="Mapa" 
                     component={MapScreen} 
+                    initialParams={{ localizacao: null }}
                     options={{
                         tabBarLabelStyle: {
                             color: "#FFF"
@@ -120,4 +124,3 @@ export default function AppRoutes() {
         </Provider>
     )
 }
-// AIzaSyBP7KPm2d1WICoOyVMUzPHGn25J9ZI5dCk

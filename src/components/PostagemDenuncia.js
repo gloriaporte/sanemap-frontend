@@ -5,6 +5,8 @@ import moment from "moment/min/moment-with-locales";
 import PersonPerfil from "../../assets/PersonPerfil.png";
 import { useNavigation } from "@react-navigation/native";
 
+import { goMap } from "../routes/app.routes";
+
 import {
   StyleSheet,
   View,
@@ -41,8 +43,11 @@ export default function PostagemDenuncia({ data }) {
         </TouchableOpacity>
       </View>
       <Text style={styles.descricao}>{data.description}</Text>
-      <TouchableOpacity onPress={ () => navigation.navigate("MapScreen", { localizacao: data.location}) }>
-        <Text style={styles.redirecionar}></Text>
+      <TouchableOpacity onPress={ () => goMap(data.location) }>
+        <Text style={styles.redirecionar}>
+          <FontAwesome name="map-marker" size={16} color="#0668B8" />
+          Ver localização no mapa
+        </Text>
       </TouchableOpacity>
       <View style={{ justifyContent: "space-between", marginBottom: 10 }}>
         {data.images.length == 1 && (
@@ -249,6 +254,7 @@ const styles = StyleSheet.create({
 
   redirecionar: {
     color: "#0668B8",
-    fontWeight: 600
+    fontWeight: "600",
+    textAlign: "center"
   }
 });

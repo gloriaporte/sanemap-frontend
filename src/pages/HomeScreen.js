@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { useContext, useState, useEffect } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../src/contexts/auth";
 import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 
@@ -10,6 +10,15 @@ import ModalPost from "../components/ModalPost";
 
 export default function HomeScreen() {
   const [ isModalVisible, setModalVisible ] = useState(false);
+  const [reload, setReload] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setReload(true);
+    }, isModalVisible);
+  });
+
+
   return (
     <View style={styles.wrapper}>
       <Header />
@@ -20,6 +29,7 @@ export default function HomeScreen() {
       <ModalPost
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
+        reload={reload}
       />
       <BotaoFlutuante
         onPress={() => {
