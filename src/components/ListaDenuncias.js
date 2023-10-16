@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   View,
-  ScrollView,
   StyleSheet,
   Image,
   Text,
@@ -14,11 +13,22 @@ import { FontAwesome } from "@expo/vector-icons";
 import { lista } from "../../assets/lista_posts";
 import PersonPerfil from "../../assets/PersonPerfil.png";
 import { AuthContext } from "../../src/contexts/auth";
-import TextInputStyled from "../components/TextInputStyled";
 import PostagemDenuncia from "./PostagemDenuncia";
+import { getTodasPostagens } from '../services/requests/getTodasPostagens';
 
 export default function ListaDenuncias({ isModalVisible, setModalVisible }) {
   const { user } = useContext(AuthContext);
+  const [ postagens, setPostagens ] = useState([])
+
+  useEffect(() => {
+    const getPostagens = async () => {
+      const response = await getTodasPostagens(user);
+      setPostagens(response.data)
+      console.log(response.data)
+    };
+    getPostagens();
+  }, []);
+
   return (
     <View style={styles.container}>
       <View
@@ -81,8 +91,8 @@ export default function ListaDenuncias({ isModalVisible, setModalVisible }) {
       </View>
       <FlatList
         showVerticalScrollIndicator={0}
-        data={lista}
-        keyExtractor={(item) => item.key}
+        data={postagens}
+        keyExtractor={(item) => item.id}
         style={{ display: "flex" }}
         renderItem={({ item }) => <PostagemDenuncia data={item} />}
       />

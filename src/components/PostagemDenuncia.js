@@ -1,121 +1,164 @@
-import React from 'react';
-import { FontAwesome } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import moment from 'moment/min/moment-with-locales';
+import React from "react";
+import { FontAwesome } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import moment from "moment/min/moment-with-locales";
+import PersonPerfil from "../../assets/PersonPerfil.png";
 
-import { 
-    StyleSheet,
-    View, 
-    Image, 
-    Text,
-    TouchableOpacity,
-    FlatList
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  FlatList,
 } from "react-native";
 
 export default function PostagemDenuncia({ data }) {
-
-    moment.locale('pt-br');
-    let numeroColunas = data.imagens.length > 1 ? 2 : 1;
-
-    return (
-        <View style={styles.container}>
-            <View style={styles.cabecalho}>
-                <Image source={{ uri:data.foto }} style={styles.foto} />
-                <View>
-                    <Text style={styles.autor}>{ data.autor }</Text>
-                    <Text style={styles.data}>{ moment.utc(data.data).local().startOf('seconds').fromNow() }</Text>
-                </View>
-                <TouchableOpacity style={styles.botaoInvisivel}>
-                    <MaterialCommunityIcons name="dots-horizontal" size={30} color="#0668B8" />
-                </TouchableOpacity>
-            </View>
-            <Text style={styles.descricao}>{ data.descricao }</Text>
-            <View style={{ justifyContent: "space-between", marginBottom: 10 }}>
-                { data.imagens.length == 1 &&
-                    <FlatList 
-                        showVerticalScrollIndicator={0}
-                        data={data.imagens}
-                        keyExtractor={item => item.key}
-                        numColumns={numeroColunas}
-                        style={{ display: "flex", gap: 10 }}
-                        renderItem={ ({ item }) =>  ( 
-                            <Image key={item.key} source={{ uri: item.imagem }} style={[styles.galeria, styles.unicoItem]} />
-                        )}
-                    />
-                }
-                { data.imagens.length == 2 &&
-                    <FlatList 
-                        showVerticalScrollIndicator={0}
-                        data={data.imagens}
-                        keyExtractor={item => item.key}
-                        numColumns={numeroColunas}
-                        columnWrapperStyle={{ justifyContent: "center", gap: 10 }}
-                        style={{ display: "flex", gap: 10 }}
-                        renderItem={ ({ item }) =>  ( 
-                            <Image key={item.key} source={{ uri: item.imagem }} style={[styles.galeria, styles.doisItem]} />
-                        )}
-                    />
-                }
-                { data.imagens.length == 3 &&
-                    <FlatList 
-                        showVerticalScrollIndicator={0}
-                        data={data.imagens}
-                        keyExtractor={item => item.key}
-                        columnWrapperStyle={{ gap: 10 }}
-                        numColumns={numeroColunas}
-                        style={{ display: "flex", gap: 10 }}
-                        renderItem={ ({ item }) =>  ( 
-                            <Image key={item.key} source={{ uri: item.imagem }} style={[styles.galeria, item.key == 3 ? styles.largaImagem : styles.outrasImagens]} />
-                        )}
-                    />
-                }
-                { data.imagens.length == 4 &&
-                    <FlatList 
-                        showVerticalScrollIndicator={0}
-                        data={data.imagens}
-                        keyExtractor={item => item.key}
-                        numColumns={numeroColunas}
-                        columnWrapperStyle={{ justifyContent: "center", gap: 10 }}
-                        style={{ display: "flex", gap: 10 }}
-                        renderItem={ ({ item }) =>  ( 
-                            <Image key={item.key} source={{ uri: item.imagem }} style={[styles.galeria, styles.doisItem]} />
-                        )}
-                    />
-                }
-            </View>
-            <View style={styles.rodape}>
-                <TouchableOpacity style={styles.botao}>
-                    <FontAwesome name={"arrow-up"} size={14} height={14} color={"#a1aaa8"}  /> 
-                </TouchableOpacity>
-                <Text style={styles.curtidas}>{ data.curtidas } denúncias</Text>
-            </View>
+  const photoUser = data.user.avatar === "" ? PersonPerfil.uri : data.user.avatar
+  moment.locale("pt-br");
+  let numeroColunas = data.images.length > 1 ? 2 : 1;
+  console.log(data.images);
+  return (
+    <View style={styles.container}>
+      <View style={styles.cabecalho}>
+        <Image
+          source={{ uri: PersonPerfil }}
+          style={styles.foto}
+        />
+        <View>
+          <Text style={styles.autor}>{data.user.nome}</Text>
+          <Text style={styles.createdAt}>
+            {moment.utc(data.data).local().startOf("seconds").fromNow()}
+          </Text>
         </View>
-    );
+        <TouchableOpacity style={styles.botaoInvisivel}>
+          <MaterialCommunityIcons
+            name="dots-horizontal"
+            size={30}
+            color="#0668B8"
+          />
+        </TouchableOpacity>
+      </View>
+      <Text style={styles.descricao}>{data.description}</Text>
+      <View style={{ justifyContent: "space-between", marginBottom: 10 }}>
+        {data.images.length == 1 && (
+          <FlatList
+            showVerticalScrollIndicator={0}
+            data={data.images}
+            keyExtractor={(item) => item.id}
+            numColumns={numeroColunas}
+            style={{ display: "flex", gap: 10 }}
+            renderItem={({ item }) => (
+              <Image
+                key={item.id}
+                source={{
+                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                }}
+                style={[styles.galeria, styles.unicoItem]}
+              />
+            )}
+          />
+        )}
+        {data.images.length == 2 && (
+          <FlatList
+            showVerticalScrollIndicator={0}
+            data={data.images}
+            keyExtractor={(item) => item.id}
+            numColumns={numeroColunas}
+            columnWrapperStyle={{ justifyContent: "center", gap: 10 }}
+            style={{ display: "flex", gap: 10 }}
+            renderItem={({ item }) => (
+              <Image
+                key={item.id}
+                source={{
+                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                }}
+                style={[styles.galeria, styles.doisItem]}
+              />
+            )}
+          />
+        )}
+        {data.images.length == 3 && (
+          <FlatList
+            showVerticalScrollIndicator={0}
+            data={data.images}
+            keyExtractor={(item) => item.id}
+            columnWrapperStyle={{ gap: 10 }}
+            numColumns={numeroColunas}
+            style={{ display: "flex", gap: 10 }}
+            renderItem={({ item }) => (
+              <Image
+                key={item.id}
+                source={{
+                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                }}
+                style={[
+                  styles.galeria,
+                  item.id == 3 ? styles.largaImagem : styles.outrasImagens,
+                ]}
+              />
+            )}
+          />
+        )}
+        {data.images.length == 4 && (
+          <FlatList
+            showVerticalScrollIndicator={0}
+            data={data.images}
+            keyExtractor={(item) => item.id}
+            numColumns={numeroColunas}
+            columnWrapperStyle={{ justifyContent: "center", gap: 10 }}
+            style={{ display: "flex", gap: 10 }}
+            renderItem={({ item }) => (
+              <Image
+                key={item.id}
+                source={{
+                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                }}
+                style={[styles.galeria, styles.doisItem]}
+              />
+            )}
+          />
+        )}
+      </View>
+      <View style={styles.rodape}>
+        <TouchableOpacity style={styles.botao}>
+          <FontAwesome
+            name={"arrow-up"}
+            size={14}
+            height={14}
+            color={"#a1aaa8"}
+          />
+        </TouchableOpacity>
+        <Text style={styles.curtidas}>{data.reports} denúncias</Text>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-      backgroundColor: "#F4F9FF",
-      padding: 10,
-      borderBottomWidth: 2,
-      borderBottomColor: "#EEE",
-      flex: 1
+    backgroundColor: "#F4F9FF",
+    padding: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: "#EEE",
+    flex: 1,
   },
 
   cabecalho: {
-      display: "flex",
-      flexDirection: "row",
-      alignItems: "flex-start",
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
   },
 
   foto: {
     width: 60,
     height: 60,
     marginRight: "4%",
-    resizeMode: "stretch",
+    padding: 30,
+    resizeMode: "center",
     borderRadius: 40,
     borderWidth: 2,
-    borderColor: "#69a4d4"
+    borderColor: "#69a4d4",
   },
 
   autor: {
@@ -123,7 +166,7 @@ const styles = StyleSheet.create({
     color: "#69a4d4",
     fontSize: 16,
     fontWeight: "500",
-    marginBottom: "4%"
+    marginBottom: "4%",
   },
 
   data: {
@@ -131,7 +174,7 @@ const styles = StyleSheet.create({
     color: "#888",
     fontSize: 12,
     fontWeight: "400",
-    marginBottom: "4%"
+    marginBottom: "4%",
   },
 
   botaoInvisivel: {
@@ -140,17 +183,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     position: "absolute",
-    right: 0
+    right: 0,
   },
 
   descricao: {
     padding: "2%",
     marginBottom: "4%",
-    color: "#444"
+    color: "#444",
   },
 
   galeria: {
-    borderRadius: 20
+    borderRadius: 20,
   },
 
   unicoItem: {
@@ -161,13 +204,13 @@ const styles = StyleSheet.create({
   doisItem: {
     width: "49%",
     height: 200,
-  },   
+  },
 
   largaImagem: {
     width: "100%",
     height: 200,
   },
-  
+
   outrasImagens: {
     width: "49%",
     height: 200,
@@ -184,7 +227,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 2
+    paddingBottom: 2,
   },
 
   rodape: {
@@ -198,6 +241,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
     width: "40%",
-    marginLeft: "2%"
+    marginLeft: "2%",
   },
 });
