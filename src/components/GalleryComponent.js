@@ -14,32 +14,28 @@ import {
 
 export default function GalleryComponent({ setImageInput }) {
 
-  const pickImageAsync = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: false,
-      quality:  1,
-      allowsMultipleSelection: true,
-      selectionLimit: 4
-    });
+    const pickImageAsync = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: false,
+            quality:  1,
+            allowsMultipleSelection: true,
+            selectionLimit: 4
+        });
 
-    if (!result.canceled) {
-      setImageInput(result.assets[0].uri);
-    } else {
-      alert('Você não selecionou nenhuma foto.');
-    }
-  };
+        if (!result.canceled) {
+            console.log(result.assets);
+            setImageInput(result.assets);
+        } 
+    };
 
   return (
     <View>
-      <TouchableOpacity title={"Abrir Câmera"} onPress={pickImageAsync} style={{ borderColor: "#0668B8", borderWidth: 3, borderRadius: 20, padding: "4%" }}>
-        <Text style={{ fontSize: 20 }}>
+      <TouchableOpacity title={"Abrir Galeria"} onPress={pickImageAsync} style={{ borderColor: "#0668B8", borderWidth: 3, borderRadius: 20, padding: "4%" }}>
+        <Text style={{ fontSize: 20, color: "#0668B8"}}>
           <Ionicons name="image" size={24} color="#0668B8" />
           Abrir Galeria
         </Text>
       </TouchableOpacity>
-      {/* { image &&
-        <Image source={{ uri: image }} style={{ width: '50%', height: '50%'}} /> 
-      } */}
     </View>
   );
 }
