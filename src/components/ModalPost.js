@@ -46,7 +46,6 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
         // setDescription(null);
         // setLocation(null);
         // setImageInput(null);
-        
         ToastAndroid.show('Denúncia realizada! Aguarde alguns instantes...', ToastAndroid.SHORT);
         setTimeout(() => {
           toggleModal();
@@ -57,8 +56,7 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
     }  
   }
 
-  const handlePost = () => {
-
+  const handlePost = async () => {
     if (description.trim().length === 0) {
       setErro({id: "1", msg: "Preenchaa descrição da denúncia."});
     } else if (!location) {
@@ -66,14 +64,13 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
     } else if (imageInput.length === 0) {
       setErro({id: "3", msg: "Adicione ao menos uma imagem do local."});
     } 
-
     const payload = {
       images: imageInput,
       description: description,
       location: location
     };
-    
-    postar(payload);
+    console.log("location", location)
+    await postar(payload);
     // lista.push({ key: lista.length + 1, ...payload})
   };
 
@@ -126,7 +123,7 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
                   showVerticalScrollIndicator={true}
                   data={imageInput}
                   horizontal={true}
-                  keyExtractor={(item) => item.key}
+                  keyExtractor={(item) => item.uri}
                   style={{ display: "flex", flexDirection: "row" }}
                   renderItem={({ item }) => 
                     <Image source={{ uri: item.uri }} style={{ width: 200, height: 200, margin: 10 }}  />

@@ -13,7 +13,7 @@ export default function MinhasDenunciasScreen() {
 
   return (
     <View style={styles.wrapper}>
-      <Text>aaaaaa</Text>
+      
     </View>
   )
 }

@@ -25,11 +25,6 @@ const theme = {
     }
 }
 
-export const goMap = (local) => {
-    const navigation = useNavigation();
-    navigation.navigate("MapScreen", { localizacao: local });
-}
-
 theme.colors.secondaryContainer = 'transparent';
 
 const BotaoCentralizado = ({ focused, onPress }) => {

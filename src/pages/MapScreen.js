@@ -17,7 +17,6 @@ import BotaoLargo from "../components/BotaoLargo.js";
 import Header from "../components/Header";
 
 export default function MapScreen({localizacao}) {
-
     const navigation = useNavigation();
     const [localizacaoMarcador, setLocalizacaoMarcador] = useState(localizacao);
 
