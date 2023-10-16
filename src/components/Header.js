@@ -1,26 +1,21 @@
 import React, { useContext } from 'react';
-import { FontAwesome } from '@expo/vector-icons';
 import { AuthContext } from '../contexts/auth';
+import LogoWithoutName from '../../assets/logoWithoutName';
 
 import { 
     StyleSheet,
     View, 
-    Image, 
     Text,
-    TouchableOpacity,
     StatusBar
 } from "react-native";
 
-import Logo from "../../assets/logo_without_name.png";
-
 export default function Header() {
-
   const { user, signOut } = useContext(AuthContext);
 
   return (
     <View style={styles.header}>
       <View style={styles.logo}>
-        <Image source={Logo} style={styles.imagem} />
+        <LogoWithoutName width='64' height='64' />
         <Text style={styles.titulo}>SANEMAP</Text>
       </View>
     </View>
@@ -59,7 +54,8 @@ const styles = StyleSheet.create({
     color: "#0668B8",
     fontSize: 30,
     fontWeight: "900",
-    marginBottom: "4%"
+    marginLeft: "5%",
+    marginBottom: "5%"
   },
 
   botao: {

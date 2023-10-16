@@ -5,7 +5,6 @@ import { useNavigation } from "@react-navigation/native";
 import { TERMS } from "../../assets/terms_of_use";
 import { registrarUsuario } from "../services/requests/registrar";
 
-import Pipeline from "../../assets/pipeline-2.png";
 import BotaoLargo from "../components/BotaoLargo";
 import TextInputStyled from "../components/TextInputStyled";
 import LogoWithoutName from '../../assets/logoWithoutName';

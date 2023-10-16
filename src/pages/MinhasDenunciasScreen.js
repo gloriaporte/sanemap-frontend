@@ -8,15 +8,16 @@ import { StyleSheet, View, Image, Text } from "react-native";
 import Header from "../components/Header";
 import ListaDenuncias from "../components/ListaDenuncias";
 
-export default function DenunciasScreen() {
-  const [isModalVisible, setModalVisible] = useState(false);
-  const navigation = useNavigation();
+export default function MinhasDenunciasScreen() {
+  const [ isModalVisible, setModalVisible ] = useState(false)
+
   return (
     <View style={styles.wrapper}>
-      <Text>aaaa</Text>
+      <Text>aaaaaa</Text>
     </View>
-  );
+  )
 }
+
 
 const styles = StyleSheet.create({
   wrapper: {

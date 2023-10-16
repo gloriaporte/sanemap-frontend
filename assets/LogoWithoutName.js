@@ -1,10 +1,10 @@
 import Svg, { Path, G, Defs, ClipPath, Rect } from "react-native-svg";
 
-export default function LogoWithoutName() {
+export default function LogoWithoutName({ width = "90", height = "90" }) {
   return (
     <Svg
-      width="90"
-      height="90"
+      width={width}
+      height={height}
       viewBox="0 0 117 117"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
