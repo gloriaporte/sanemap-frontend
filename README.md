@@ -1,3 +1,4 @@
+❗ATENÇÃO: O repositório frontend será realocado para a Organização Sanemap, no repositório [frontend](https://github.com/sanemap/frontend)❗
 # :computer: #HackforChange: SANEMAP
 Este repositório tem como por objetivo hospedar o código do projeto SANEMAP, referente ao hackathon online [Hack for Change](https://www.hackforchange.com.br) em conjunto da FIAP e da Alura, sendo o tema deste evento **City Solutions**, voltado para ajudar a instituição
 [Passos Mágicos](https://passosmagicos.org.br) em Embu-Guaçu/SP com soluções para a cidade.
@@ -19,11 +20,15 @@ estas áreas carentes possam receber atenção e também para que o sistema sirv
 4. Utilize o comando **npx expo start** e conecte seu dispositivo virtual ou físico de acordo com as instruções (query code, usb e/ou localhost pelo Expo). Se não conseguir se conectar, utilize o **expo start --tunnel** para tentar a conexão.
 5. Utilize os comandos no terminal para rodar o aplicativo em seu dispositivo.
 ### Método 2: Instalando a .apk no celular
+1. Caso você tenha um celular android ou queira testar no seu emulador, acesse o [link da apk do expo](https://expo.dev/artifacts/eas/ji5UDnohrmUr9m8PjdCqBq.apk)
+2. Baixe o arquivo e configure as permissões do seu dispositivo para que ele confie em executar a aplicação.
+3. Execute a aplicação.
 
 ## Materiais
-* [Site do projeto](https://sanemap.phabloraylan.com)
+* [Organização Sanemap](https://github.com/sanemap)
 * [Repositório Back-end](https://github.com/sanemap/backend)
-* Documentação
+* [Repositório Front-end Original](https://github.com/gloriaporte/sanemap-frontend)
+* [Repositório Front-end Realocado](https://github.com/sanemap/frontend)
 * [Vídeo Pitch](https://www.youtube.com/watch?v=4qjTk8DxQLM&feature=youtu.be)
 * [Protótipo no Figma](https://www.figma.com/file/oKMNiDqCHDQdulHtV2yqk8/SaneMap?type=design&node-id=0%3A1&mode=design&t=NmZzS7ff0im5OSVC-1)
-* Build/.apk para instalar o aplicativo (por enquanto android)
+* [Build/.apk para instalar o aplicativo (por enquanto apenas apk para android)](https://expo.dev/artifacts/eas/ji5UDnohrmUr9m8PjdCqBq.apk)
