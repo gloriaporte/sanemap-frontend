@@ -3,7 +3,6 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import moment from "moment/min/moment-with-locales";
 import PersonPerfil from "../../assets/PersonPerfil.png";
-import { useNavigation } from "@react-navigation/native";
 
 import {
   StyleSheet,
