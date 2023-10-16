@@ -7,7 +7,11 @@ import LocationComponent from "./LocationComponent";
 import BotaoLargo from "./BotaoLargo";
 import GalleryComponent from "./GalleryComponent";
 
+import { useContext } from "react";
+import { AuthContext } from "../contexts/auth";
+
 import { lista } from '../../assets/lista_posts';
+import { criarPost } from "../services/requests/criarPostagem";
 
 import { 
   Modal, 
@@ -17,66 +21,69 @@ import {
   ScrollView, 
   StyleSheet ,
   TouchableOpacity,
-  Image
+  Image,
+  FlatList,
+  ToastAndroid
 } from "react-native";
 
 export default function ModalPost({ isModalVisible, setModalVisible }) {
-  const [currentDateTime, setCurrentDateTime] = useState('');
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState(null);
-  const [locationInput, setLocationInput] = useState(null);
   const [imageInput, setImageInput] = useState([]);
+  const [erro, setErro] = useState(null);
+  const { user } = useContext(AuthContext);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
 
-  const getCurrentDateTime = () => {
-    const now = new Date();
-    const year = now.getFullYear();
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    setCurrentDateTime(formattedDate);
-  };
+  const postar = async (payload) => {
+    const response = await criarPost(payload, user.token);
+    if(response) {
+      if(response.status == 400) {
+        setErro({id: "1", msg: response.message });
+      } else {
+        setErro(null);
+        setDescription(null);
+        setLocation(null);
+        setImageInput(null);
+        
+        ToastAndroid.show('Denúncia realizada! Aguarde alguns instantes...', ToastAndroid.SHORT);
+        setTimeout(() => {
+          toggleModal();
+        }, 2000);
+      }
+    } else {
+      setErro({id: "1", msg: "Ocorreu um erro, contate o suporte."})
+    }  
+  }
 
   const handlePost = () => {
-    getCurrentDateTime();
 
-    console.log(currentDateTime)
+    if (description.trim().length === 0) {
+      setErro({id: "1", msg: "Preenchaa descrição da denúncia."});
+    } else if (!location) {
+      setErro({id: "2", msg: "Adicione a sua localização."});
+    } else if (imageInput.length === 0) {
+      setErro({id: "3", msg: "Adicione ao menos uma imagem do local."});
+    } 
 
     const payload = {
-      foto: "https://cdn.create.vista.com/api/media/medium/230785596/stock-vector-unnamed-user-icon-simple-vector-illustration?token=",
-      autor: "Anônimo",
-      descricao:
-        description,
-      data: currentDateTime,
-      curtidas: 0,
-      endereco: locationInput,
-      latitude: location.altitude,
-      longitude: location.latitude,
-      imagens: [
-        {
-          key: 1,
-          imagem:
-            imageInput,
-        },
-      ],
+      images: imageInput,
+      description: description,
+      location: location
     };
-
-    lista.push({ key: lista.length + 1, ...payload})
-    toggleModal();
+    
+    postar(payload);
+    // lista.push({ key: lista.length + 1, ...payload})
   };
 
   return (
     <View>
       <Modal visible={isModalVisible} animationType="slide" transparent={true}>
         <View style={styles.container}>
-          <ScrollView contentContainerStyle={styles.scrollview}>
-            <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 10 }}>
+          <View style={styles.scrollview}>
+            <View style={{ flexDirection: "row", justifyContent: "center", marginBottom: 5 }}>
               <Text style={{ fontWeight: 700, fontSize: 22 }}>Nova Denúncia</Text>
               <TouchableOpacity
                 textColor="#566583"
@@ -93,8 +100,10 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
               state={description}
               setState={setDescription}
               heightSize={120}
+              erro={(erro && (erro.id == 1)) ? true : false}
             />
 
+          <View>
           { location ?
             // <Image source={{ uri: imageInput }} style={{ width: '50%', height: '50%'}} /> 
             <Text style={styles.sucesso}>Localização pega com êxito!</Text>
@@ -104,28 +113,49 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
               <Text style={styles.alerta}>Precisamos da sua localização atual.</Text>
             </View>
           }
+          </View>
 
+          <Text style={{ fontSize: 18, fontWeight: "600" }}>Fotos do local</Text>
           <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>           
             <CameraComponent setImageInput={setImageInput} />
             <GalleryComponent setImageInput={setImageInput} />
           </View>
-          { imageInput.length > 0 ?
-            // <Image source={{ uri: imageInput }} style={{ width: '50%', height: '50%'}} /> 
-            <Text style={styles.alerta}>{imageInput}</Text>
+          { imageInput ?
+            (
+              imageInput.length > 0 ?
+                <FlatList
+                  showVerticalScrollIndicator={true}
+                  data={imageInput}
+                  horizontal={true}
+                  keyExtractor={(item) => item.key}
+                  style={{ display: "flex", flexDirection: "row" }}
+                  renderItem={({ item }) => 
+                    <Image source={{ uri: item.uri }} style={{ width: 200, height: 200, margin: 10 }}  />
+                  }
+                />
+              :
+                <Image source={{ uri: imageInput.uri }} style={{ width: '90%', height: '30%', marginTop: "10%", marginLeft: "4%" }} /> 
+              )
             :
             <Text style={styles.alerta}>Precisamos de uma a quatro fotos.</Text>
           }
 
             <View style={{ position: "absolute", bottom: "2%", width: "100%", left: "5%"}}>
+              <View style={{ height: 20, marginBottom: 20 }}>
+              {
+                erro && 
+                (<Text style={styles.mensagemErro}>{erro.msg}</Text>)
+              }
+              </View>
               <BotaoLargo
                 paddingButton={10}
                 fontSizeButton={20}
                 texto={"Postar"}
                 icone={false}
-                onPress={handlePost}
+                onPress={() => handlePost() }
               />
             </View>
-          </ScrollView>
+          </View>
         </View>
       </Modal>
     </View>
@@ -148,7 +178,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     width: "100%",
-    height: "70%",
+    height: "94%",
     gap: 20
   },
 
@@ -164,5 +194,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#0668B8",
     textAlign: "center"
+  },
+
+  mensagemErro: {
+    color: "#c20202",
+    textAlign: "center",
+    fontWeight: "700"
   }
-})
+});
