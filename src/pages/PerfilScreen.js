@@ -25,14 +25,6 @@ export default function PerfilScreen() {
             <Header />
             <View style={styles.main}>
                 <View style={styles.linha}>
-                    <BotaoQuadrado titulo="Minhas Denúncias" icone={"phone-alt"} onPress={ () => console.log("oi")} />
-                    <BotaoQuadrado titulo="SaneCoins" icone={"circle"} onPress={ () => console.log("oi")} />
-                </View>
-                <View style={styles.linha}>
-                    <BotaoQuadrado titulo="Registrar Denúncias" icone={"clipboard-check"} onPress={ () => console.log("oi")} />
-                    <BotaoQuadrado titulo="Recompensas" icone={"gift"} onPress={ () => console.log("oi")} />
-                </View>
-                <View style={styles.linha}>
                     <BotaoQuadrado titulo="Sair" icone={"sign-out-alt"} onPress={signOut} />
                 </View>
             </View>
