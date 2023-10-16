@@ -18,6 +18,10 @@ import {
 
 export default function PostagemDenuncia({ data }) {
   const navigation = useNavigation();
+  const goMap = (local) => {
+    console.log("aaa", data.location)
+    navigation.navigate("Mapa", { localizacao: local });
+  }
 
   moment.locale("pt-br");
   let numeroColunas = data.images.length > 1 ? 2 : 1;
@@ -45,8 +49,7 @@ export default function PostagemDenuncia({ data }) {
       <Text style={styles.descricao}>{data.description}</Text>
       <TouchableOpacity onPress={ () => goMap(data.location) }>
         <Text style={styles.redirecionar}>
-          <FontAwesome name="map-marker" size={16} color="#0668B8" />
-          Ver localização no mapa
+          <FontAwesome name="map-marker" size={16} color="#0668B8" />  Ver localização no mapa
         </Text>
       </TouchableOpacity>
       <View style={{ justifyContent: "space-between", marginBottom: 10 }}>

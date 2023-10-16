@@ -10,7 +10,7 @@ import ModalPost from "../components/ModalPost";
 
 export default function HomeScreen() {
   const [ isModalVisible, setModalVisible ] = useState(false);
-  const [reload, setReload] = useState(false);
+  const [ reload, setReload ] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {

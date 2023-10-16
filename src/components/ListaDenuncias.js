@@ -25,7 +25,6 @@ export default function ListaDenuncias({ isModalVisible, setModalVisible, reload
     const getPostagens = async () => {
       const response = await getTodasPostagens(user);
       setPostagens(response.data)
-      console.log(response.data)
     };
     getPostagens();
   }, []);
