@@ -5,7 +5,6 @@ import moment from "moment/min/moment-with-locales";
 import PersonPerfil from "../../assets/PersonPerfil.png";
 import { useNavigation } from "@react-navigation/native";
 
-
 import {
   StyleSheet,
   View,
@@ -18,7 +17,6 @@ import {
 export default function PostagemDenuncia({ data }) {
   const navigation = useNavigation();
   const goMap = (local) => {
-    console.log("aaa", data.location)
     navigation.navigate("Mapa", { localizacao: local });
   }
   moment.locale("pt-br");
