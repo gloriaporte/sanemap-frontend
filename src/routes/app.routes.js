@@ -68,7 +68,7 @@ export default function AppRoutes() {
                     }}
                 />
                 <AppTab.Screen 
-                    name="Denúncias" 
+                    name="Minhas Denúncias" 
                     component={DenunciasScreen} 
                     options={{
                         tabBarLabelStyle: {
@@ -120,3 +120,4 @@ export default function AppRoutes() {
         </Provider>
     )
 }
+// AIzaSyBP7KPm2d1WICoOyVMUzPHGn25J9ZI5dCk

@@ -4,13 +4,19 @@
       [
         "expo-camera",
         {
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
+          "cameraPermission": "Permita que SANEMAP acesse a sua câmera."
         }
-      ], 
+      ],
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location."
+          "locationAlwaysAndWhenInUsePermission": "Permita que SANEMAP acesse a sua localização."
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Permita que o SANEMAP acesse a sua galeria para adicionar imagens da denúncia."
         }
       ]
     ],
@@ -25,18 +31,38 @@
       "resizeMode": "contain",
       "backgroundColor": "#F4F9FF"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBP7KPm2d1WICoOyVMUzPHGn25J9ZI5dCkl"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo_without_name.png",
         "backgroundColor": "#F4F9FF"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.glorygo.sanemap"
     },
     "web": {
       "favicon": "./assets/logo_without_name.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aa003517-6794-4668-aef8-d618f0969ab4"
+      }
     }
   }
 }

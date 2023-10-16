@@ -1,7 +1,10 @@
 import React, { useContext, useState } from "react";
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../../src/contexts/auth';
+
 import MapView from 'react-native-maps';
+import { PROVIDER_GOOGLE } from 'react-native-maps';
+import {Marker} from 'react-native-maps';
 
 import { 
     StyleSheet,
@@ -17,11 +20,22 @@ export default function MapScreen() {
 
     const navigation = useNavigation();
 
+    
+
     return (
         <View style={styles.wrapper}>
             <Header />
             <View style={styles.main}>
-                <MapView style={styles.map} />
+                <MapView 
+                    initialRegion={{
+                        latitude: -23.8309, 
+                        longitude: -46.8160,
+                        latitudeDelta: 0,
+                        longitudeDelta: 0.02
+                    }}
+                    style={styles.map} 
+                    provider={PROVIDER_GOOGLE}
+                />
             </View>
         </View>
     )
