@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from '../pages/HomeScreen';
 import MapScreen from '../pages/MapScreen';
-import DenunciasScreen from '../pages/DenunciasScreen';
+import MinhasDenunciasScreen from '../pages/MinhasDenunciasScreen';
 import PerfilScreen from '../pages/PerfilScreen';
 import RecompensasScreen from '../pages/RecompensasScreen';
 import SaneCoin from '../../assets/SaneCoin';
@@ -72,7 +72,7 @@ export default function AppRoutes() {
                 />
                 <AppTab.Screen 
                     name="Minhas Denúncias" 
-                    component={DenunciasScreen} 
+                    component={MinhasDenunciasScreen} 
                     options={{
                         tabBarLabelStyle: {
                             color: "#FFF"

@@ -5,10 +5,9 @@ import { useNavigation } from "@react-navigation/native";
 import { TERMS } from "../../assets/terms_of_use";
 import { registrarUsuario } from "../services/requests/registrar";
 
-import Pipeline from "../../assets/pipeline-2.png";
-import LogoWithoutName from "../../assets/logo_without_name.png";
 import BotaoLargo from "../components/BotaoLargo";
 import TextInputStyled from "../components/TextInputStyled";
+import LogoWithoutName from '../../assets/logoWithoutName';
 
 import {
   Image,
@@ -81,9 +80,7 @@ export default function RegisterScreen() {
       setErro({id: "7", msg: "Preencha o campo de confirmação de senha."});
     } else if (password !== confirmPassword) {
       setErro({id: "8", msg: "As senhas não são iguais."});
-      //Futuramente colocar validador de CPF
     } else {
-
       let payload = {
         nome: nomeCompleto,
         cpf: cpf,
@@ -91,7 +88,6 @@ export default function RegisterScreen() {
         password: password,
         telefone: telefone
       };
-
       registrar(payload);
       setErro(null);
     }
@@ -100,10 +96,7 @@ export default function RegisterScreen() {
   return (
     <View style={[styles.container, {minHeight: Math.round(windowHeight)}]}>
       <View style={{ justifyContent: "center", alignItems: "center", marginTop: 10 }}>
-        <Image
-          source={LogoWithoutName}
-          style={{ width: "30%", resizeMode: "contain" }}
-        />
+        <LogoWithoutName />
       </View>
 
       <View style={styles.containerInputs}>
@@ -187,10 +180,6 @@ export default function RegisterScreen() {
             (<Text style={styles.mensagemErro}>{erro.msg}</Text>)
           }
         </View>
-      </View>
-      
-      <View style={{ flex: 0.25, justifyContent: "center", alignItems: "center" }}>
-        <Image source={Pipeline} style={styles.image} />
       </View>
 
       <Modal
