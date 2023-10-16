@@ -9,9 +9,7 @@ import ListaDenuncias from "../components/ListaDenuncias";
 import ModalPost from "../components/ModalPost";
 
 export default function HomeScreen() {
-  const { user, signOut } = useContext(AuthContext);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const navigation = useNavigation();
+  const [ isModalVisible, setModalVisible ] = useState(false);
   return (
     <View style={styles.wrapper}>
       <Header />
