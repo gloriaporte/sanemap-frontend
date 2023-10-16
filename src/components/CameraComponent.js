@@ -1,8 +1,16 @@
-import { Camera } from 'expo-camera';
-import { Ionicons } from '@expo/vector-icons';
 import React, { useState, useRef } from 'react';
-import { View, Text, Modal, TouchableOpacity, StyleSheet, Image } from 'react-native';
-import BotaoLargo from './BotaoLargo';
+import { Camera } from 'expo-camera';
+
+import { Ionicons } from '@expo/vector-icons';
+
+import { 
+  View, 
+  Text, 
+  Modal, 
+  TouchableOpacity, 
+  StyleSheet, 
+  Image 
+} from 'react-native';
 
 export default function CameraComponente({ setImageInput }) {
   const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -41,19 +49,19 @@ export default function CameraComponente({ setImageInput }) {
   }
 
   if (permission === false) {
-    return <Text>Sem acesso à câmera</Text>;
+    return <Text>Sem acesso à câmera.</Text>;
   }
 
   return (
     <View>
-      { image ?
+      <TouchableOpacity title={"Abrir Câmera"} onPress={openCamera} style={{ borderColor: "#0668B8", borderWidth: 3, borderRadius: 20, padding: "4%" }}>
+        <Text style={{ fontSize: 20 }}>
+          <Ionicons name="location-sharp" size={24} color="#0668B8" />
+          Abrir Câmera
+        </Text>
+      </TouchableOpacity>
+      { image &&
         <Image source={{ uri: image }} style={{ width: '50%', height: '50%'}} /> 
-        : <BotaoLargo
-         paddingButton={15}
-         texto={"Abrir Câmera"}
-         icone={false}
-         onPress={openCamera}
-       />
       }
       <Modal animationType="slide" transparent={false} visible={isVisible}>
         <View style={styles.container}>
