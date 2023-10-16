@@ -1,9 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import PipelineMaintenance from "../../assets/pipeline-maintenance.png";
+import PipelineMaintenance from "../../assets/PipelineMaintenance.js"
 
 import { View, Image, Text, StyleSheet, StatusBar } from "react-native";
-
 import BotaoLargo from "../components/BotaoLargo.js";
 
 export default function IndexScreen() {
@@ -44,7 +43,7 @@ export default function IndexScreen() {
           onPress={sendToLogin}
         />
       </View>
-      <Image source={PipelineMaintenance} style={styles.image} />
+      <PipelineMaintenance/>
     </View>
   );
 }

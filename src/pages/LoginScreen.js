@@ -2,8 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { AuthContext } from "../../src/contexts/auth";
-
-import Pipeline from "../../assets/pipeline.png";
+import Pipeline from '../../assets/Pipeline';
 import BotaoLargo from "../components/BotaoLargo";
 import TextInputStyled from "../components/TextInputStyled";
 
@@ -52,7 +51,7 @@ export default function LoginScreen() {
 
   return (
     <View automaticallyAdjustKeyboardInsets={true} style={[styles.container, {minHeight: Math.round(windowHeight)}]}>
-      <Image source={Pipeline} style={styles.image} />
+      <Pipeline />
       <View style={styles.containerForm}>
         <View>
           <TextInputStyled 
@@ -78,29 +77,31 @@ export default function LoginScreen() {
           style={{
             flexDirection: "column",
             alignItems: "center",
-            marginTop: "-10%",
+            marginTop: 30
           }}
         >
           <TouchableOpacity onPress={recoverPassword}>
-            <Text style={[styles.formatText, { color: "#0668B8", marginTop: 20 }]}>
+            <Text style={{ color: "#0668B8" }}>
               Esqueceu a Senha?
             </Text>
           </TouchableOpacity>
           <View style={{ flexDirection: "row" }}>
-            <Text style={styles.formatText}>Não tem conta? </Text>
+            <Text>Não tem conta? </Text>
             <TouchableOpacity onPress={sendToRegister}>
-              <Text style={[styles.formatText, { color: "#0668B8" }]}>
+              <Text style={{ color: "#0668B8" }}>
                 Crie uma
               </Text>
             </TouchableOpacity>
           </View>
         </View>
-        <BotaoLargo
-          paddingButton={16}
-          texto={"Entrar"}
-          icone={false}
-          onPress={handleLogin}
-        />
+        <View style={{ marginTop: 30 }}>
+          <BotaoLargo
+            paddingButton={16}
+            texto={"Entrar"}
+            icone={false}
+            onPress={handleLogin}
+          />
+        </View>
         <View style={{ marginTop: 2, height: 30 }}>
           {
             erro && 
@@ -108,8 +109,6 @@ export default function LoginScreen() {
           }
         </View>
       </View>
-
-
 
       <View style={styles.containerLine}>
         <View style={styles.line} />
@@ -160,25 +159,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "space-evenly",
     paddingHorizontal: 40,
-    marginTop: 140,
+    marginTop: 160,
     paddingBottom: 40
-  },
-
-  image: {
-    position: "absolute",
-    width: "50%",
-    height: "15%",
-    resizeMode: "contain",
-    top: 0,
-    left: "50%",
-    transform: [{ translateX: -50 }],
   },
 
   containerLine: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginVertical: 16,
+    marginBottom: 50,
   },
 
   line: {
