@@ -10,7 +10,6 @@ import GalleryComponent from "./GalleryComponent";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/auth";
 
-import { lista } from '../../assets/lista_posts';
 import { criarPost } from "../services/requests/criarPostagem";
 
 import { 
@@ -19,7 +18,7 @@ import {
   Text, 
   TextInput, 
   ScrollView, 
-  StyleSheet ,
+  StyleSheet,
   TouchableOpacity,
   Image,
   FlatList,
@@ -161,7 +160,7 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(0, 0, 0, .4)",    
+    backgroundColor: "rgba(0, 0, 0, 0.4)",    
     margin: "auto",
     width: "100%",
     height: "100%",

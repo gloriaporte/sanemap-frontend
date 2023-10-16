@@ -7,7 +7,7 @@ import { registrarUsuario } from "../services/requests/registrar";
 
 import BotaoLargo from "../components/BotaoLargo";
 import TextInputStyled from "../components/TextInputStyled";
-import LogoWithoutName from '../../assets/logoWithoutName';
+import LogoWithoutName from "../../assets/logoWithoutName";
 
 import {
   Image,

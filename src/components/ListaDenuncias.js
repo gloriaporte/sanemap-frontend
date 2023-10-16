@@ -29,6 +29,13 @@ export default function ListaDenuncias({ isModalVisible, setModalVisible, reload
     getPostagens();
   }, []);
 
+  function refresh() {
+    const getPostagens = async () => {
+      const response = await getTodasPostagens(user);
+      setPostagens(response.data)
+    };
+  }
+
   const renderLista = postagens.map((item) => 
     <PostagemDenuncia data={item} />
   );
@@ -38,6 +45,8 @@ export default function ListaDenuncias({ isModalVisible, setModalVisible, reload
       <FlatList
         showVerticalScrollIndicator={0}
         data={postagens}
+        refreshing={false}
+        onRefresh={refresh}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
           <View
@@ -125,7 +134,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 60,
     padding: 30,
-    resizeMode: "center",
+    resizeMode: "stretch",
     borderRadius: 40,
     borderWidth: 2,
     borderColor: "#0668B8",
