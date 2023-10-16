@@ -16,13 +16,14 @@ import {
   TextInput, 
   ScrollView, 
   StyleSheet ,
-  TouchableOpacity
+  TouchableOpacity,
+  Image
 } from "react-native";
 
 export default function ModalPost({ isModalVisible, setModalVisible }) {
   const [currentDateTime, setCurrentDateTime] = useState('');
   const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState(null);
   const [locationInput, setLocationInput] = useState(null);
   const [imageInput, setImageInput] = useState([]);
 
@@ -94,27 +95,36 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
               heightSize={120}
             />
 
-            <LocationComponent setLocationFromModal={setLocation} />
+          { location ?
+            // <Image source={{ uri: imageInput }} style={{ width: '50%', height: '50%'}} /> 
+            <Text style={styles.sucesso}>Localização pega com êxito!</Text>
+            :
+            <View>
+              <LocationComponent setLocationFromModal={setLocation} />
+              <Text style={styles.alerta}>Precisamos da sua localização atual.</Text>
+            </View>
+          }
 
-            <TextInputStyled
-              label="Endereço do local a ser denunciado"
-              state={locationInput}
-              setState={setLocationInput}
-            />
-
-          <Text style={styles.alerta}>Precisamos de ao menos uma foto e no máximo quatro.</Text>
           <View style={{ display: "flex", flexDirection: "row", justifyContent: "space-between" }}>           
             <CameraComponent setImageInput={setImageInput} />
             <GalleryComponent setImageInput={setImageInput} />
           </View>
+          { imageInput.length > 0 ?
+            // <Image source={{ uri: imageInput }} style={{ width: '50%', height: '50%'}} /> 
+            <Text style={styles.alerta}>{imageInput}</Text>
+            :
+            <Text style={styles.alerta}>Precisamos de uma a quatro fotos.</Text>
+          }
 
-            <BotaoLargo
+            <View style={{ position: "absolute", bottom: "2%", width: "100%", left: "5%"}}>
+              <BotaoLargo
                 paddingButton={10}
                 fontSizeButton={20}
                 texto={"Postar"}
                 icone={false}
                 onPress={handlePost}
               />
+            </View>
           </ScrollView>
         </View>
       </Modal>
@@ -135,16 +145,24 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFF",
     padding: 20,
     borderRadius: 10,
-    justifyContent: "space-between",
     position: "absolute",
     bottom: 0,
     width: "100%",
-    height: "70%"
+    height: "70%",
+    gap: 20
   },
 
   alerta: {
     fontSize: 14,
     fontWeight: "600",
-    color: "#710"
+    color: "#910",
+    textAlign: "center"
+  },
+
+  sucesso: {
+    fontSize: 14,
+    fontWeight: "600",
+    color: "#0668B8",
+    textAlign: "center"
   }
 })

@@ -31,8 +31,8 @@ export default function GalleryComponent({ setImageInput }) {
 
   return (
     <View>
-      <TouchableOpacity title={"Abrir Câmera"} onPress={pickImageAsync} style={{ borderColor: "#0668B8", borderWidth: 3, borderRadius: 20, padding: "4%" }}>
-        <Text style={{ fontSize: 20 }}>
+      <TouchableOpacity title={"Abrir Galeria"} onPress={pickImageAsync} style={{ borderColor: "#0668B8", borderWidth: 3, borderRadius: 20, padding: "4%" }}>
+        <Text style={{ fontSize: 20, color: "#0668B8"}}>
           <Ionicons name="image" size={24} color="#0668B8" />
           Abrir Galeria
         </Text>
