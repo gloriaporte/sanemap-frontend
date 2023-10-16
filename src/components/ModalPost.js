@@ -44,9 +44,9 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
         setErro({id: "1", msg: response.message });
       } else {
         setErro(null);
-        setDescription(null);
-        setLocation(null);
-        setImageInput(null);
+        // setDescription(null);
+        // setLocation(null);
+        // setImageInput(null);
         
         ToastAndroid.show('Denúncia realizada! Aguarde alguns instantes...', ToastAndroid.SHORT);
         setTimeout(() => {

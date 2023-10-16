@@ -16,23 +16,24 @@ import {
 import BotaoLargo from "../components/BotaoLargo.js";
 import Header from "../components/Header";
 
-export default function MapScreen() {
+export default function MapScreen({localizacao}) {
 
     const navigation = useNavigation();
+    const [localizacaoMarcador, setLocalizacaoMarcador] = useState(localizacao);
 
+    const regiaoInicial = {
+        latitude: -23.8309, 
+        longitude: -46.8160,
+        latitudeDelta: 0,
+        longitudeDelta: 0.02
+    };
     
-
     return (
         <View style={styles.wrapper}>
             <Header />
             <View style={styles.main}>
                 <MapView 
-                    initialRegion={{
-                        latitude: -23.8309, 
-                        longitude: -46.8160,
-                        latitudeDelta: 0,
-                        longitudeDelta: 0.02
-                    }}
+                    initialRegion={localizacao ? localizacao : regiaoInicial}
                     style={styles.map} 
                     provider={PROVIDER_GOOGLE}
                 />

@@ -3,6 +3,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import moment from "moment/min/moment-with-locales";
 import PersonPerfil from "../../assets/PersonPerfil.png";
+import { useNavigation } from "@react-navigation/native";
 
 import {
   StyleSheet,
@@ -14,6 +15,8 @@ import {
 } from "react-native";
 
 export default function PostagemDenuncia({ data }) {
+  const navigation = useNavigation();
+
   moment.locale("pt-br");
   let numeroColunas = data.images.length > 1 ? 2 : 1;
   return (
@@ -38,6 +41,9 @@ export default function PostagemDenuncia({ data }) {
         </TouchableOpacity>
       </View>
       <Text style={styles.descricao}>{data.description}</Text>
+      <TouchableOpacity onPress={ () => navigation.navigate("MapScreen", { localizacao: data.location}) }>
+        <Text style={styles.redirecionar}></Text>
+      </TouchableOpacity>
       <View style={{ justifyContent: "space-between", marginBottom: 10 }}>
         {data.images.length == 1 && (
           <FlatList
@@ -216,7 +222,6 @@ const styles = StyleSheet.create({
 
   botao: {
     borderRadius: 40,
-    borderColor: "#FFF",
     borderWidth: 2,
     borderColor: "#FFF",
     borderColor: "#a1aaa8",
@@ -241,4 +246,9 @@ const styles = StyleSheet.create({
     width: "40%",
     marginLeft: "2%",
   },
+
+  redirecionar: {
+    color: "#0668B8",
+    fontWeight: 600
+  }
 });
