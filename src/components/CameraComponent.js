@@ -15,7 +15,6 @@ import {
 export default function CameraComponente({ setImageInput }) {
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [isVisible, setIsVisible] = useState(false);
-  const [image, setImage] = useState(null)
   const cameraRef = useRef(null);
 
   const checkCameraPermission = async () => {
@@ -37,9 +36,7 @@ export default function CameraComponente({ setImageInput }) {
   const takePicture = async () => {
     if (cameraRef.current) {
       const { uri } = await cameraRef.current.takePictureAsync();
-      console.log('Foto tirada:', uri);
-      setImage(uri)
-      setImageInput(uri)
+      setImageInput({ uri: uri })
       closeCamera();
     }
   };
@@ -60,9 +57,9 @@ export default function CameraComponente({ setImageInput }) {
           Abrir Câmera
         </Text>
       </TouchableOpacity>
-      { image &&
-        <Image source={{ uri: image }} style={{ width: '50%', height: '50%'}} /> 
-      }
+      {/* { image &&
+        <Image source={{ uri: image }} style={{ width: '100%', height: '40%', marginTop: "10%", marginLeft: "4%" }} /> 
+      } */}
       <Modal animationType="slide" transparent={false} visible={isVisible}>
         <View style={styles.container}>
           <Camera

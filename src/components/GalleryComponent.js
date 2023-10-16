@@ -14,20 +14,19 @@ import {
 
 export default function GalleryComponent({ setImageInput }) {
 
-  const pickImageAsync = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: false,
-      quality:  1,
-      allowsMultipleSelection: true,
-      selectionLimit: 4
-    });
+    const pickImageAsync = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            allowsEditing: false,
+            quality:  1,
+            allowsMultipleSelection: true,
+            selectionLimit: 4
+        });
 
-    if (!result.canceled) {
-      setImageInput(result.assets[0].uri);
-    } else {
-      alert('Você não selecionou nenhuma foto.');
-    }
-  };
+        if (!result.canceled) {
+            console.log(result.assets);
+            setImageInput(result.assets);
+        } 
+    };
 
   return (
     <View>
@@ -37,9 +36,6 @@ export default function GalleryComponent({ setImageInput }) {
           Abrir Galeria
         </Text>
       </TouchableOpacity>
-      {/* { image &&
-        <Image source={{ uri: image }} style={{ width: '50%', height: '50%'}} /> 
-      } */}
     </View>
   );
 }
