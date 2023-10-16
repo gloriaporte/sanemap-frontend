@@ -12,6 +12,12 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Permita que SANEMAP acesse a sua localização."
         }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Permita que o SANEMAP acesse a sua galeria para adicionar imagens da denúncia."
+        }
       ]
     ],
     "name": "SANEMAP",
