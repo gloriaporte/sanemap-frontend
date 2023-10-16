@@ -25,7 +25,7 @@ export default function HomeScreen() {
       />
       <BotaoFlutuante
         onPress={() => {
-          setModalVisible(true);
+          setModalVisible(!isModalVisible);
         }}
       />
     </View>
