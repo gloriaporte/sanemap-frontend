@@ -14,15 +14,13 @@ import {
 } from "react-native";
 
 export default function PostagemDenuncia({ data }) {
-  const photoUser = data.user.avatar === "" ? PersonPerfil.uri : data.user.avatar
   moment.locale("pt-br");
   let numeroColunas = data.images.length > 1 ? 2 : 1;
-  console.log(data.images);
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
         <Image
-          source={{ uri: PersonPerfil }}
+          source={data.user.avatar === "" ? PersonPerfil : { uri: data.user.avatar }}
           style={styles.foto}
         />
         <View>
