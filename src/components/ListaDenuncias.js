@@ -16,17 +16,26 @@ import { AuthContext } from "../../src/contexts/auth";
 import PostagemDenuncia from "./PostagemDenuncia";
 import { getTodasPostagens } from '../services/requests/getTodasPostagens';
 import { SafeAreaView } from "react-native-safe-area-context";
+import { getTodasPostagensUser } from '../services/requests/getTodasPostagensUser';
 
-export default function ListaDenuncias({ isModalVisible, setModalVisible }) {
+export default function ListaDenuncias({ isModalVisible, setModalVisible, allPosts = true }) {
   const { user } = useContext(AuthContext);
   const [ postagens, setPostagens ] = useState([])
 
   useEffect(() => {
-    const getPostagens = async () => {
-      const response = await getTodasPostagens(user);
-      setPostagens(response.data)
-    };
-    getPostagens();
+    if (allPosts === true) {
+      const getPostagens = async () => {
+        const response = await getTodasPostagens(user);
+        setPostagens(response.data)
+      };
+      getPostagens();
+    } else {
+      const getPostagensActualUser = async () => {
+        const response = await getTodasPostagensUser(user)
+        setPostagens(response.data)
+      }
+      getPostagensActualUser()
+    }
   }, []);
 
   function refresh() {
