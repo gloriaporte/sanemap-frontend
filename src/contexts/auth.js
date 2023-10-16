@@ -5,7 +5,6 @@ import api from "../services/api";
 export const AuthContext = createContext({});
 
 export default function AuthProvider({ children }) {
-
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -13,12 +12,10 @@ export default function AuthProvider({ children }) {
     useEffect(()=> {
         async function loadStorage() {
             const storageUser = await AsyncStorage.getItem('Auth_user');
-
             if(storageUser) {
                 setUser(JSON.parse(storageUser));
                 setLoading(false);
             }
-
             setLoading(false);
         }
         
@@ -68,12 +65,11 @@ export default function AuthProvider({ children }) {
     }
 
     async function storageUser(data) {
-        await AsyncStorage.setItem('Auth_user', JSON.stringify(data));
+        await AsyncStorage.setItem('Auth_user', JSON.stringify({ ...data, "avatar": "../../assets/PersonPerfil.png"}));
     }
 
     async function signOut() {
         setLoading(true);
-
         await AsyncStorage.clear().then( ()=> {
             // api.defaults.headers.common["Authorization"] = `Bearer ${user.token}`;
             // api.post('logout').then(

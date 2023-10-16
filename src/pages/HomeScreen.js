@@ -1,10 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { AuthContext } from "../../src/contexts/auth";
-
 import { StyleSheet, View, Image, Text, ScrollView } from "react-native";
 
-import BotaoLargo from "../components/BotaoLargo.js";
 import Header from "../components/Header";
 import BotaoFlutuante from "../components/BotaoFlutuante";
 import ListaDenuncias from "../components/ListaDenuncias";
@@ -14,11 +12,13 @@ export default function HomeScreen() {
   const { user, signOut } = useContext(AuthContext);
   const [isModalVisible, setModalVisible] = useState(false);
   const navigation = useNavigation();
-
   return (
     <View style={styles.wrapper}>
       <Header />
-      <ListaDenuncias />
+      <ListaDenuncias
+        isModalVisible={isModalVisible}
+        setModalVisible={setModalVisible}
+      />
       <ModalPost
         isModalVisible={isModalVisible}
         setModalVisible={setModalVisible}
