@@ -23,7 +23,6 @@ export default function GalleryComponent({ setImageInput }) {
         });
 
         if (!result.canceled) {
-            console.log(result.assets);
             setImageInput(result.assets);
         } 
     };

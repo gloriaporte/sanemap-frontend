@@ -5,8 +5,6 @@ import moment from "moment/min/moment-with-locales";
 import PersonPerfil from "../../assets/PersonPerfil.png";
 import { useNavigation } from "@react-navigation/native";
 
-import { goMap } from "../routes/app.routes";
-
 import {
   StyleSheet,
   View,
@@ -17,10 +15,9 @@ import {
 } from "react-native";
 
 export default function PostagemDenuncia({ data }) {
-  const navigation = useNavigation();
-
   moment.locale("pt-br");
   let numeroColunas = data.images.length > 1 ? 2 : 1;
+  
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
@@ -50,6 +47,9 @@ export default function PostagemDenuncia({ data }) {
         </Text>
       </TouchableOpacity>
       <View style={{ justifyContent: "space-between", marginBottom: 10 }}>
+        {data.images.length == 0&&
+          <Text>Sem imagens disponíveis.</Text>
+        }
         {data.images.length == 1 && (
           <FlatList
             showVerticalScrollIndicator={0}
@@ -61,7 +61,7 @@ export default function PostagemDenuncia({ data }) {
               <Image
                 key={item.id}
                 source={{
-                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                  uri: item.url
                 }}
                 style={[styles.galeria, styles.unicoItem]}
               />
@@ -80,7 +80,7 @@ export default function PostagemDenuncia({ data }) {
               <Image
                 key={item.id}
                 source={{
-                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                  uri: item.url
                 }}
                 style={[styles.galeria, styles.doisItem]}
               />
@@ -99,7 +99,7 @@ export default function PostagemDenuncia({ data }) {
               <Image
                 key={item.id}
                 source={{
-                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                  uri: item.url
                 }}
                 style={[
                   styles.galeria,
@@ -121,7 +121,7 @@ export default function PostagemDenuncia({ data }) {
               <Image
                 key={item.id}
                 source={{
-                  uri: "https://sanemap.phabloraylan.com/" + item.path,
+                  uri: item.url
                 }}
                 style={[styles.galeria, styles.doisItem]}
               />
@@ -160,11 +160,11 @@ const styles = StyleSheet.create({
   },
 
   foto: {
-    width: 60,
+    width: 50,
     height: 60,
     marginRight: "4%",
     padding: 30,
-    resizeMode: "center",
+    resizeMode: "contain",
     borderRadius: 40,
     borderWidth: 2,
     borderColor: "#69a4d4",

@@ -21,7 +21,6 @@ export default function LocationComponent({ setLocationFromModal }) {
     }
     let location = await Location.getCurrentPositionAsync({});
     setLocation(location);
-    console.log(location);
   };
 
   let text = "";
