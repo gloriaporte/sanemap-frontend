@@ -20,7 +20,7 @@ import PostagemDenuncia from "./PostagemDenuncia";
 export default function ListaDenuncias({ isModalVisible, setModalVisible }) {
   const { user } = useContext(AuthContext);
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <View
         style={{
           borderBottomWidth: 1,
@@ -86,7 +86,7 @@ export default function ListaDenuncias({ isModalVisible, setModalVisible }) {
         style={{ display: "flex" }}
         renderItem={({ item }) => <PostagemDenuncia data={item} />}
       />
-    </ScrollView>
+    </View>
   );
 }
 

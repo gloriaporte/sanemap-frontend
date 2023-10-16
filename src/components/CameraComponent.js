@@ -55,7 +55,7 @@ export default function CameraComponente({ setImageInput }) {
   return (
     <View>
       <TouchableOpacity title={"Abrir Câmera"} onPress={openCamera} style={{ borderColor: "#0668B8", borderWidth: 3, borderRadius: 20, padding: "4%" }}>
-        <Text style={{ fontSize: 20 }}>
+        <Text style={{ fontSize: 20, color: "#0668B8" }}>
           <Ionicons name="location-sharp" size={24} color="#0668B8" />
           Abrir Câmera
         </Text>

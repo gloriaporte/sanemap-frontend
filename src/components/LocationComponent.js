@@ -1,11 +1,13 @@
-import { Ionicons } from "@expo/vector-icons";
 import React, { useState, useEffect } from "react";
+import * as Location from "expo-location";
+
+import { Ionicons } from "@expo/vector-icons";
+
 import {
   View,
   Text,
+  TouchableOpacity
 } from "react-native";
-import BotaoLargo from "./BotaoLargo";
-import * as Location from "expo-location";
 
 export default function LocationComponent({ setLocationFromModal }) {
   const [location, setLocation] = useState(null);
@@ -19,6 +21,7 @@ export default function LocationComponent({ setLocationFromModal }) {
     }
     let location = await Location.getCurrentPositionAsync({});
     setLocation(location);
+    console.log(location);
   };
 
   let text = "";
@@ -30,16 +33,16 @@ export default function LocationComponent({ setLocationFromModal }) {
   }
 
   return (
-    <View>
+    <View style={{ width: "100%" }}>
       {text.length > 0 ? (
         <Text>Localizacão Coletada!</Text>
       ) : (
-        <BotaoLargo
-          paddingButton={15}
-          texto={"Localizacão Atual"}
-          icone={false}
-          onPress={getCurrentLocation}
-        />
+        <TouchableOpacity title={"Pegar Localização"} onPress={getCurrentLocation} style={{ borderColor: "#0668B8", borderWidth: 3, borderRadius: 30, padding: "4%" }}>
+          <Text style={{ fontSize: 20, color: "#0668B8" }}>
+            <Ionicons name="map" size={24} color="#0668B8" />
+            Pegar Localização Atual
+          </Text>
+        </TouchableOpacity>
       )}
     </View>
   );
