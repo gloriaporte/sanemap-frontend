@@ -14,40 +14,35 @@ import {
     Text 
 } from "react-native";
 
-import BotaoLargo from "../components/BotaoLargo.js";
 import Header from "../components/Header";
 
 export default function MapScreen() {
     const route = useRoute();
-    const navigation = useNavigation();
-    const local = route.params.localizacao.split(",");
+    const local1 = route.params.localizacao;
+    const local = local1.split(",");
+
     const [localizacaoMarcador, setLocalizacaoMarcador] = useState({
         latitude: local[0],
         longitude: local[1],
         latitudeDelta: 0,
         longitudeDelta: 0.02
     });
-    console.log(route.params.localizacao);
 
-    const regiaoInicial = {
-        latitude: -23.8309, 
-        longitude: -46.8160,
-        latitudeDelta: 0,
-        longitudeDelta: 0.02
-    };
+    console.log(localizacaoMarcador.latitude);
     
     return (
         <View style={styles.wrapper}>
             <Header />
             <View style={styles.main}>
                 <MapView 
+                    initialRegion={localizacaoMarcador}
                     style={styles.map}
                     provider={PROVIDER_GOOGLE}
                 >
-                    {/* <Marker 
+                    <Marker 
                         coordinate={localizacaoMarcador} 
                         pinColor={"#0668B8"}
-                    /> */}
+                    />
                 </MapView>
             </View>
         </View>
