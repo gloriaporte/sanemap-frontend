@@ -4,8 +4,7 @@ import { AuthContext } from '../../src/contexts/auth';
 
 import MapView from 'react-native-maps';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
-import { Marker } from 'react-native-maps';
-import { useRoute } from '@react-navigation/native';
+import {Marker} from 'react-native-maps';
 
 import { 
     StyleSheet,
@@ -14,33 +13,32 @@ import {
     Text 
 } from "react-native";
 
+import BotaoLargo from "../components/BotaoLargo.js";
 import Header from "../components/Header";
 
-export default function MapScreen() {
-    const route = useRoute();
-    const local1 = route.params.localizacao;
-    const local = local1.split(",");
+export default function MapScreen({localizacao}) {
+    const navigation = useNavigation();
+    const [localizacaoMarcador, setLocalizacaoMarcador] = useState(localizacao);
 
-    const [localizacaoMarcador, setLocalizacaoMarcador] = useState({
-        latitude: local[0],
-        longitude: local[1],
+    const regiaoInicial = {
+        latitude: -23.8309, 
+        longitude: -46.8160,
         latitudeDelta: 0,
         longitudeDelta: 0.02
-    });
-
-    console.log(localizacaoMarcador.latitude);
+    };
+    
     
     return (
         <View style={styles.wrapper}>
             <Header />
             <View style={styles.main}>
                 <MapView 
-                    initialRegion={localizacaoMarcador}
-                    style={styles.map}
+                    initialRegion={regiaoInicial}
+                    style={styles.map} 
                     provider={PROVIDER_GOOGLE}
                 >
                     <Marker 
-                        coordinate={localizacaoMarcador} 
+                        coordinate={regiaoInicial} 
                         pinColor={"#0668B8"}
                     />
                 </MapView>
