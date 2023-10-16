@@ -19,7 +19,6 @@ export default function IndexScreen() {
 
   return (
     <View style={styles.container}>
-
       <Text style={[styles.formatText, {fontSize: 24, color: '#5F6F8F', textAlign: 'center', marginTop: '5rem' }]}>
         Bem-vindo ao {"\n"}<Text style={{ color: '#0668B8'}}>Sanemap</Text>
       </Text>

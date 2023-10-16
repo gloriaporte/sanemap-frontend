@@ -18,7 +18,6 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
     setModalVisible(!isModalVisible);
   };
 
-
   const getCurrentDateTime = () => {
     const now = new Date();
     const year = now.getFullYear();

@@ -21,7 +21,7 @@
     "icon": "./assets/logo_without_name.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/logo_with_name.svg",
+      "image": "./assets/SplashScreen.png",
       "resizeMode": "contain",
       "backgroundColor": "#F4F9FF"
     },
