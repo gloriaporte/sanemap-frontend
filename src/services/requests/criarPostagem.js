@@ -3,16 +3,25 @@ import api from "../api";
 export const criarPost = async (payload, token) => {
   try {
     const formData = new FormData();
-    payload.images.forEach((imagem, index) => {
-      formData.append(`images[${index}]`, {
-        uri: imagem.uri,
-        name: `image-${index}.jpeg`,
+
+    if(payload.images.length > 1) {
+      payload.images.forEach((imagem, index) => {
+        formData.append(`images[${index}]`, {
+          uri: imagem.uri,
+          name: `image-${index}.jpeg`,
+          type: "image/jpeg",
+        });
+      });
+    } else {
+      formData.append(`images`, {
+        uri: payload.images.uri,
+        name: `imagem-${payload.images}.jpeg`,
         type: "image/jpeg",
       });
-    });
+    }
 
     formData.append('description', payload.description);
-    formData.append('location', payload.location);
+    formData.append('location', `${payload.location.latitude},${payload.location.longitude}`);
 
     const config = {
       headers: {
@@ -22,7 +31,6 @@ export const criarPost = async (payload, token) => {
     };
 
     const response = await api.post("app/publications", formData, config);
-    
     return {
       status: response.status,
       message: response.data
@@ -34,3 +42,4 @@ export const criarPost = async (payload, token) => {
     };
   }
 }
+// Ainda há alguns erros com entity too large e com uma só imagem, deve arrumar esses erros depois

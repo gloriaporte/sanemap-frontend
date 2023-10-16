@@ -17,7 +17,7 @@ import PostagemDenuncia from "./PostagemDenuncia";
 import { getTodasPostagens } from '../services/requests/getTodasPostagens';
 import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function ListaDenuncias({ isModalVisible, setModalVisible, reload }) {
+export default function ListaDenuncias({ isModalVisible, setModalVisible }) {
   const { user } = useContext(AuthContext);
   const [ postagens, setPostagens ] = useState([])
 

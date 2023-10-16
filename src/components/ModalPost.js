@@ -10,6 +10,7 @@ import GalleryComponent from "./GalleryComponent";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/auth";
 
+import { lista } from '../../assets/lista_posts';
 import { criarPost } from "../services/requests/criarPostagem";
 
 import { 
@@ -18,7 +19,7 @@ import {
   Text, 
   TextInput, 
   ScrollView, 
-  StyleSheet,
+  StyleSheet ,
   TouchableOpacity,
   Image,
   FlatList,
@@ -43,9 +44,10 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
         setErro({id: "1", msg: response.message });
       } else {
         setErro(null);
-        // setDescription(null);
-        // setLocation(null);
-        // setImageInput(null);
+        setDescription(null);
+        setLocation(null);
+        setImageInput(null);
+        
         ToastAndroid.show('Denúncia realizada! Aguarde alguns instantes...', ToastAndroid.SHORT);
         setTimeout(() => {
           toggleModal();
@@ -56,7 +58,8 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
     }  
   }
 
-  const handlePost = async () => {
+  const handlePost = () => {
+
     if (description.trim().length === 0) {
       setErro({id: "1", msg: "Preenchaa descrição da denúncia."});
     } else if (!location) {
@@ -64,13 +67,14 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
     } else if (imageInput.length === 0) {
       setErro({id: "3", msg: "Adicione ao menos uma imagem do local."});
     } 
+
     const payload = {
       images: imageInput,
       description: description,
       location: location
     };
-    console.log("location", location)
-    await postar(payload);
+    
+    postar(payload);
     // lista.push({ key: lista.length + 1, ...payload})
   };
 
@@ -123,7 +127,7 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
                   showVerticalScrollIndicator={true}
                   data={imageInput}
                   horizontal={true}
-                  keyExtractor={(item) => item.uri}
+                  keyExtractor={(item) => item.key}
                   style={{ display: "flex", flexDirection: "row" }}
                   renderItem={({ item }) => 
                     <Image source={{ uri: item.uri }} style={{ width: 200, height: 200, margin: 10 }}  />
@@ -160,7 +164,7 @@ export default function ModalPost({ isModalVisible, setModalVisible }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(0, 0, 0, 0.4)",    
+    backgroundColor: "rgba(0, 0, 0, .4)",    
     margin: "auto",
     width: "100%",
     height: "100%",

@@ -4,7 +4,8 @@ import { AuthContext } from '../../src/contexts/auth';
 
 import MapView from 'react-native-maps';
 import { PROVIDER_GOOGLE } from 'react-native-maps';
-import {Marker} from 'react-native-maps';
+import { Marker } from 'react-native-maps';
+import { useRoute } from '@react-navigation/native';
 
 import { 
     StyleSheet,
@@ -16,9 +17,17 @@ import {
 import BotaoLargo from "../components/BotaoLargo.js";
 import Header from "../components/Header";
 
-export default function MapScreen({localizacao}) {
+export default function MapScreen() {
+    const route = useRoute();
     const navigation = useNavigation();
-    const [localizacaoMarcador, setLocalizacaoMarcador] = useState(localizacao);
+    const local = route.params.localizacao.split(",");
+    const [localizacaoMarcador, setLocalizacaoMarcador] = useState({
+        latitude: local[0],
+        longitude: local[1],
+        latitudeDelta: 0,
+        longitudeDelta: 0.02
+    });
+    console.log(route.params.localizacao);
 
     const regiaoInicial = {
         latitude: -23.8309, 
@@ -32,10 +41,14 @@ export default function MapScreen({localizacao}) {
             <Header />
             <View style={styles.main}>
                 <MapView 
-                    initialRegion={localizacao ? localizacao : regiaoInicial}
-                    style={styles.map} 
+                    style={styles.map}
                     provider={PROVIDER_GOOGLE}
-                />
+                >
+                    {/* <Marker 
+                        coordinate={localizacaoMarcador} 
+                        pinColor={"#0668B8"}
+                    /> */}
+                </MapView>
             </View>
         </View>
     )
